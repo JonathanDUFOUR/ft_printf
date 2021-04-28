@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/04/28 01:59:33 by jodufour         ###   ########.fr       */
+/*   Created: 2021/04/28 01:58:43 by jodufour          #+#    #+#             */
+/*   Updated: 2021/04/28 02:35:51 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <stdint.h>
 
-enum	e_ret
+int	ft_printf(const char *format, ...)
 {
-	SUCCESS,
-	ERROR
-};
+	uint32_t	pc;
 
-int	ft_printf(const char *format, ...);
-
-#endif
+	
+	pc = 42;
+	return (pc);
+}

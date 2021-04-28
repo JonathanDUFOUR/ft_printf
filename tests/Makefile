@@ -5,33 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/04/28 02:26:57 by jodufour         ###   ########.fr        #
+#    Created: 2021/04/28 02:13:29 by jodufour          #+#    #+#              #
+#    Updated: 2021/04/28 02:34:05 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libftprintf.a
-INCLUDE	=	includes
+NAME	=	tests
+LIBPATH	=	../libftprintf.a
+INCLUDE	=	../includes
 SRCD	=	srcs/
 OBJD	=	objs/
 CC		=	gcc -c -o
-LINKER	=	ar rcs
+LINKER	=	gcc -o
 MAKEDIR	=	mkdir -p
 RM		=	rm -rf
 
 SRCS	=	\
-			core.c
+			main.c
 
 OBJS	=	${SRCS:.c=.o}
 OBJS	:=	${addprefix ${OBJD}, ${OBJS}}
 
 DEPS	=	${OBJS:.o=.d}
 
-CFLAGS	=	-Wextra -Wall -MMD -I ${INCLUDE}
-LDFLAGS	=
+CFLAGS	=	-Wall -Wextra -I ${INCLUDE} -MMD
+LDFLAGS	=	
 
-${NAME}:	${OBJS}
-	${LINKER} $@ ${LDFLAGS} $^
+${NAME}:	${OBJS} 
+	${LINKER} $@ ${LDFLAGS} $^ ${LIBPATH}
 
 all:	${NAME}
 
