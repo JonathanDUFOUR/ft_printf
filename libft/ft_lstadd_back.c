@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/07 00:39:26 by jonathan          #+#    #+#             */
+/*   Updated: 2021/03/23 19:20:15 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int	main(void)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	int	ret;
+	t_list	*last;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	last = ft_lstlast(*alst);
+	if (!last)
+		*alst = new;
+	else
+		last->next = new;
 }

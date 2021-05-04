@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/03/26 02:04:40 by jdufour           #+#    #+#             */
+/*   Updated: 2021/04/07 03:45:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include <unistd.h>
+#include "libft.h"
 
-int	main(void)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	int	ret;
-
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	if (s)
+	{
+		write(fd, s, ft_strlen(s));
+		write(fd, "\n", 1);
+	}
 }

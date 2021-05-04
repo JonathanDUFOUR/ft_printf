@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_toggle_nbyte.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdufour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/04/03 20:01:54 by jdufour           #+#    #+#             */
+/*   Updated: 2020/04/03 21:10:44 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include <inttypes.h>
 
-int	main(void)
+void	ft_toggle_nbyte(uint32_t *ptr, uint32_t n)
 {
-	int	ret;
-
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	n %= 5;
+	if (n == 1)
+		*ptr ^= 0xff;
+	if (n == 2)
+		*ptr ^= 0xffff;
+	if (n == 3)
+		*ptr ^= 0xffffff;
+	if (n == 4)
+		*ptr ^= 0xffffffff;
 }

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/03/26 02:19:11 by jdufour           #+#    #+#             */
+/*   Updated: 2021/03/23 18:40:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include <unistd.h>
 
-int	main(void)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	ret;
+	unsigned int	abs;
+	char			d;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	abs = n;
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		abs = -n;
+	}
+	if (abs > 9)
+		ft_putnbr_fd(abs / 10, fd);
+	d = abs % 10 + '0';
+	write(fd, &d, 1);
 }

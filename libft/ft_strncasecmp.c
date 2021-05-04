@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncasecmp.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdufour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/03/27 02:38:36 by jdufour           #+#    #+#             */
+/*   Updated: 2021/03/05 00:18:04 by jonathan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include <sys/types.h>
+#include "libft.h"
 
-int	main(void)
+int	ft_strncasecmp(char const *s1, char const *s2, size_t n)
 {
-	int	ret;
-
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	while (n && s1 && s2 && *s1 && ft_toupper(*s1++) == ft_toupper(*s2++))
+		--n;
+	return (*s1 - *s2);
 }

@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/03/26 17:47:35 by jdufour           #+#    #+#             */
+/*   Updated: 2021/04/07 03:57:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int	main(void)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	int	ret;
+	char	*cpy;
+	char	*ptr;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	if (!s)
+		return (NULL);
+	cpy = ft_strdup(s);
+	if (cpy)
+	{
+		ptr = cpy - 1;
+		while (*++ptr)
+			*ptr = f(*ptr);
+	}
+	return (cpy);
 }

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_cv_new.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/04 03:23:19 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/04 03:25:04 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdlib.h>
 #include "ft_printf.h"
 
-int	main(void)
+t_cv	*ft_cv_new(char const elem)
 {
-	int	ret;
+	t_cv	*output;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	output = malloc(sizeof(t_cv));
+	if (!output)
+		return (NULL);
+	output->elem = elem;
+	output->next = NULL;
+	return (output);
 }

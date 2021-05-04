@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putbyte.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/03/25 03:01:12 by jdufour           #+#    #+#             */
+/*   Updated: 2021/04/07 18:09:07 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include <inttypes.h>
+#include <unistd.h>
 
-int	main(void)
+void	ft_putbyte(uint8_t byte)
 {
-	int	ret;
+	int	i;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	i = 8;
+	while (--i >= 0)
+	{
+		if ((byte >> i) & 1)
+			write(1, "1", 1);
+		else
+			write(1, "0", 1);
+	}
 }

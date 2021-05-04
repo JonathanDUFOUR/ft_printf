@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_reverse_byte.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdufour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/04/04 00:12:55 by jdufour           #+#    #+#             */
+/*   Updated: 2020/04/05 06:34:22 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include <inttypes.h>
+#include "libft.h"
 
-int	main(void)
+void	ft_reverse_byte(uint32_t *ptr, uint32_t idx)
 {
-	int	ret;
+	uint32_t	i;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	idx %= 4;
+	i = 0;
+	while (i < 4)
+	{
+		ft_swap_bits(ptr, i + idx * 8, 7 - i + idx * 8);
+		++i;
+	}
 }

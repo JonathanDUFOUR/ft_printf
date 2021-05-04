@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/03/21 06:21:03 by jdufour           #+#    #+#             */
+/*   Updated: 2021/04/06 19:45:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_atoi(char const *s)
 {
-	int	ret;
+	int	res;
+	int	sign;
+	int	int_size;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	res = 0;
+	sign = 1;
+	int_size = 0;
+	while (ft_isspace(*s))
+		++s;
+	if (*s == '-' || *s == '+')
+		if (*s++ == '-')
+			sign ^= ~1u;
+	while (ft_isdigit(*s) && ++int_size)
+	{
+		res = res * 10 + *s++ - '0';
+	}
+	if (int_size > 10)
+	{
+		if (sign < 0)
+			return (0);
+		return (-1);
+	}
+	return (res * sign);
 }

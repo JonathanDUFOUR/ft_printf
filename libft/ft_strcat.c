@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdufour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/03/21 06:26:11 by jdufour           #+#    #+#             */
+/*   Updated: 2021/03/05 00:32:48 by jonathan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
-
-int	main(void)
+char	*ft_strcat(char *dest, const char *src)
 {
-	int	ret;
+	int	i;
+	int	j;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	i = -1;
+	while (dest[++i])
+		;
+	j = -1;
+	while (src[++j])
+	{
+		dest[i] = src[j];
+		++i;
+	}
+	dest[i] = 0;
+	return (dest);
 }

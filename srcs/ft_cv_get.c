@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_cv_get.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/04 02:38:10 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/04 04:04:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdlib.h>
 #include "ft_printf.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_cv_get(t_cv **cv, char const *format)
 {
-	int	ret;
-
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			if (!ft_strchr(CV_CHARS, *(++format)))
+				return (CV_ERRNO);
+			*cv = ft_cv_add_back(*cv, *format);
+			if (!*cv)
+				return (MALLOC_ERRNO);
+		}
+		++format;
+	}
 	return (SUCCESS);
 }

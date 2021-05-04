@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_cv_add_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/04 02:45:14 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/04 03:32:51 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdlib.h>
 #include "ft_printf.h"
 
-int	main(void)
+t_cv	*ft_cv_add_back(t_cv *cv, char const elem)
 {
-	int	ret;
+	t_cv	*p;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	if (!cv)
+		return (ft_cv_new(elem));
+	else
+	{
+		p = cv;
+		while (p->next)
+			p = p->next;
+		p->next = malloc(sizeof(t_cv));
+		if (!p->next)
+		{
+			ft_cv_free(cv);
+			return (NULL);
+		}
+		p->next->elem = elem;
+	}
+	return (cv);
 }

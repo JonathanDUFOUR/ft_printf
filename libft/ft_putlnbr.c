@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putlnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonathan <jojo19.duf@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2021/03/06 17:37:26 by jonathan          #+#    #+#             */
+/*   Updated: 2021/03/06 17:39:41 by jonathan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_putlnbr(long n)
 {
-	int	ret;
+	unsigned long	abs;
+	char			d;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	abs = n;
+	if (n < 0)
+	{
+		abs = -n;
+		ft_putchar('-');
+	}
+	if (abs > 9)
+		ft_putlnbr(abs / 10);
+	d = abs % 10 + '0';
+	ft_putchar(d);
 }

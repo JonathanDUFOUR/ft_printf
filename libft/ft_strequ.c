@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.c                                             :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdufour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:58:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/04/28 02:35:51 by jodufour         ###   ########.fr       */
+/*   Created: 2020/03/26 20:01:04 by jdufour           #+#    #+#             */
+/*   Updated: 2020/03/26 22:38:13 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-
-int	ft_printf(const char *format, ...)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	uint32_t	pc;
-
-	
-	pc = 42;
-	return (pc);
+	if (s1 == s2)
+		return (1);
+	while (s1 && s2 && *s1 && *s1 == *s2++)
+		++s1;
+	return (s1 && s2 && *s1 == *s2);
 }

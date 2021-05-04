@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:04:48 by jodufour         ###   ########.fr       */
+/*   Created: 2020/04/01 17:04:12 by jdufour           #+#    #+#             */
+/*   Updated: 2021/04/07 04:09:43 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include <stdlib.h>
+#include <sys/types.h>
+#include "libft.h"
 
-int	main(void)
+char	*ft_strndup(char const *s, size_t n)
 {
-	int	ret;
+	char	*output;
 
-	ret = ft_printf("%d %d %% %u\n");
-	printf("ret == %d\n", ret);
-	return (SUCCESS);
+	output = ft_calloc((n + 1), sizeof(char));
+	if (output)
+		ft_memcpy(output, s, n);
+	return (output);
 }

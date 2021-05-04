@@ -6,12 +6,13 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 02:13:29 by jodufour          #+#    #+#              #
-#    Updated: 2021/04/28 02:34:05 by jodufour         ###   ########.fr        #
+#    Updated: 2021/04/30 20:13:17 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	tests
-LIBPATH	=	../libftprintf.a
+LIBPATH	=	../
+LIBNAME	=	libftprintf.a
 INCLUDE	=	../includes
 SRCD	=	srcs/
 OBJD	=	objs/
@@ -31,8 +32,9 @@ DEPS	=	${OBJS:.o=.d}
 CFLAGS	=	-Wall -Wextra -I ${INCLUDE} -MMD
 LDFLAGS	=	
 
-${NAME}:	${OBJS} 
-	${LINKER} $@ ${LDFLAGS} $^ ${LIBPATH}
+${NAME}:	${OBJS}
+	make -C ../ 
+	${LINKER} $@ ${LDFLAGS} $^ ${LIBPATH}${LIBNAME}
 
 all:	${NAME}
 
