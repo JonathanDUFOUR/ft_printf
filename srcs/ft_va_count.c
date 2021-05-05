@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_queue_add_back.c                                :+:      :+:    :+:   */
+/*   ft_va_count.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 02:45:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/05 03:28:53 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/05 19:34:14 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/05 22:03:07 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "ft_printf.h"
+#include <sys/types.h>
 
-t_queue	*ft_queue_add_back(t_queue *queue, char const type, void *elem)
+ssize_t	ft_va_count(char const *format)
 {
-	t_queue	*p;
+	ssize_t	count;
 
-	if (!queue)
-		return (ft_queue_new(type, elem));
-	else
+	count = 0;
+	while (*format)
 	{
-		p = queue;
-		while (p->next)
-			p = p->next;
-		p->next = malloc(sizeof(t_queue));
-		if (!p->next)
+		if (*format == '%')
 		{
-			ft_queue_free(queue);
-			return (NULL);
+			++format;
 		}
-		p->next->type = type;
-		p->next->elem = elem;
-		p->next->next = NULL;
+		++format;
 	}
-	return (queue);
+	return (count);
 }

@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/05 03:44:37 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/05 19:36:06 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,6 @@ MAKEDIR	=	mkdir -p
 RM		=	rm -rf
 
 FT_SRCS	=	\
-			ft_strlen.c		\
-			ft_strchr.c		\
-			ft_putstr_fd.c	\
-			ft_putnbr_fd.c	\
-			ft_putchar_fd.c	\
 
 FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 
