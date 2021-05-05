@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/05 03:15:52 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/05 03:44:37 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,11 @@ FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 SRCS	=	\
 			${FT_SRCS}			\
 			ft_printf.c			\
-			ft_queue_get.c		\
 			ft_queue_new.c		\
 			ft_queue_free.c		\
 			ft_queue_print.c	\
+			ft_queue_get_type.c	\
+			ft_queue_get_elem.c	\
 			ft_queue_add_back.c	\
 
 OBJS	=	${SRCS:.c=.o}

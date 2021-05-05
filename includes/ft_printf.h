@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/05 03:17:46 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/05 03:47:44 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdint.h>
 # include <stdbool.h>
+#include <stdarg.h>
 
 # define CV_CHARS	"cspdiuxX%"
 
@@ -27,19 +28,22 @@ enum	e_ret
 };
 
 typedef struct s_queue	t_queue;
+typedef struct s_cvrt	t_cvrt;
 
 struct					s_queue
 {
-	char	elem;
+	char	type;
+	void	*elem;
 	t_queue	*next;
 };
 
 int		ft_printf(const char *format, ...);
 int		ft_multifree(int ret, uint32_t n, ...);
-int		ft_queue_get(t_queue **cvrt, char const *format);
-void	ft_queue_print(t_queue *cv);
-void	ft_queue_free(t_queue *cv);
-t_queue	*ft_queue_add_back(t_queue *cv, char const elem);
-t_queue	*ft_queue_new(char const elem);
+int		ft_queue_get_type(t_queue **queue, char const *format);
+void	ft_queue_get_elem(t_queue *queue, va_list *va);
+void	ft_queue_print(t_queue *queue);
+void	ft_queue_free(t_queue *queue);
+t_queue	*ft_queue_add_back(t_queue *queue, char const type, void *elem);
+t_queue	*ft_queue_new(char const type, void *elem);
 
 #endif
