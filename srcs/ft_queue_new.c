@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cvrt_print.c                                    :+:      :+:    :+:   */
+/*   ft_cvrt_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 03:51:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/05 02:42:36 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/04 03:23:19 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/05 03:16:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "ft_printf.h"
-#include "libft.h"
 
-void	ft_cvrt_print(t_cvrt *cv)
+t_queue	*ft_queue_new(char const elem)
 {
-	while (cv)
-	{
-		ft_putchar_fd(cv->elem, 1);
-		cv = cv->next;
-	}
-	ft_putchar_fd('\n', 1);
+	t_queue	*queue;
+
+	queue = malloc(sizeof(t_queue));
+	if (!queue)
+		return (NULL);
+	queue->elem = elem;
+	queue->next = NULL;
+	return (queue);
 }

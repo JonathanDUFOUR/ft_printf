@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cvrt_get.c                                      :+:      :+:    :+:   */
+/*   ft_queue_print.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 02:38:10 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/05 02:42:35 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/04 03:51:49 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/05 03:17:12 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "ft_printf.h"
 #include "libft.h"
 
-int	ft_cvrt_get(t_cvrt **cv, char const *format)
+void	ft_queue_print(t_queue *queue)
 {
-	while (*format)
+	while (queue)
 	{
-		if (*format == '%')
-		{
-			if (!ft_strchr(CV_CHARS, *(++format)))
-				return (CV_ERRNO);
-			*cv = ft_cvrt_add_back(*cv, *format);
-			if (!*cv)
-				return (MALLOC_ERRNO);
-		}
-		++format;
+		ft_putchar_fd(queue->elem, 1);
+		queue = queue->next;
 	}
-	return (SUCCESS);
+	ft_putchar_fd('\n', 1);
 }

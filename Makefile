@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/04 03:57:47 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/05 03:15:52 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ FT_SRCS	=	\
 			ft_strlen.c		\
 			ft_strchr.c		\
 			ft_putstr_fd.c	\
+			ft_putnbr_fd.c	\
 			ft_putchar_fd.c	\
 
 FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
@@ -31,11 +32,11 @@ FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 SRCS	=	\
 			${FT_SRCS}			\
 			ft_printf.c			\
-			ft_cv_get.c			\
-			ft_cv_new.c			\
-			ft_cv_free.c		\
-			ft_cv_print.c		\
-			ft_cv_add_back.c	\
+			ft_queue_get.c		\
+			ft_queue_new.c		\
+			ft_queue_free.c		\
+			ft_queue_print.c	\
+			ft_queue_add_back.c	\
 
 OBJS	=	${SRCS:.c=.o}
 OBJS	:=	${addprefix ${OBJD}, ${OBJS}}

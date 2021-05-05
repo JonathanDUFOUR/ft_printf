@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/05 02:40:54 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/05 03:17:46 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,26 @@
 
 enum	e_ret
 {
-	ERROR = -1,
-	SUCCESS,
-	CV_ERRNO,
-	MALLOC_ERRNO
+	ERROR = -3,
+	CV_ERRNO = -2,
+	MALLOC_ERRNO = -1,
+	SUCCESS = 0
 };
 
-typedef struct s_cvrt	t_cvrt;
+typedef struct s_queue	t_queue;
 
-struct					s_cvrt
+struct					s_queue
 {
 	char	elem;
-	t_cvrt	*next;
+	t_queue	*next;
 };
 
 int		ft_printf(const char *format, ...);
 int		ft_multifree(int ret, uint32_t n, ...);
-bool	ft_cvrt_is_valid(char const c);
-void	ft_cvrt_print(t_cvrt *cv);
-void	ft_cvrt_free(t_cvrt *cv);
-t_cvrt	*ft_cvrt_add_back(t_cvrt *cv, char const elem);
-t_cvrt	*ft_cvrt_new(char const elem);
+int		ft_queue_get(t_queue **cvrt, char const *format);
+void	ft_queue_print(t_queue *cv);
+void	ft_queue_free(t_queue *cv);
+t_queue	*ft_queue_add_back(t_queue *cv, char const elem);
+t_queue	*ft_queue_new(char const elem);
 
 #endif

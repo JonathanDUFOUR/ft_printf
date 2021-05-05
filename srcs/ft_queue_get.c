@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cvrt_add_back.c                                 :+:      :+:    :+:   */
+/*   ft_queue_get.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 02:45:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/05 02:42:33 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/04 02:38:10 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/05 03:17:11 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_printf.h"
+#include "libft.h"
 
-t_cvrt	*ft_cvrt_add_back(t_cvrt *cv, char const elem)
+int	ft_queue_get(t_queue **queue, char const *format)
 {
-	t_cvrt	*p;
+	int	count;
 
-	if (!cv)
-		return (ft_cvrt_new(elem));
-	else
+	count = 0;
+	while (*format)
 	{
-		p = cv;
-		while (p->next)
-			p = p->next;
-		p->next = malloc(sizeof(t_cvrt));
-		if (!p->next)
+		if (*format == '%')
 		{
-			ft_cvrt_free(cv);
-			return (NULL);
+			if (!ft_strchr(CV_CHARS, *(++format)))
+				return (CV_ERRNO);
+			*queue = ft_queue_add_back(*queue, *format);
+			if (!*queue)
+				return (MALLOC_ERRNO);
+			++count;
 		}
-		p->next->elem = elem;
+		++format;
 	}
-	return (cv);
+	return (count);
 }
