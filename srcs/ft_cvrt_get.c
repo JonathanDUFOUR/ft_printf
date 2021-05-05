@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cv_add_back.c                                   :+:      :+:    :+:   */
+/*   ft_cvrt_get.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 02:45:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 03:32:51 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/04 02:38:10 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/05 02:42:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_printf.h"
+#include "libft.h"
 
-t_cv	*ft_cv_add_back(t_cv *cv, char const elem)
+int	ft_cvrt_get(t_cvrt **cv, char const *format)
 {
-	t_cv	*p;
-
-	if (!cv)
-		return (ft_cv_new(elem));
-	else
+	while (*format)
 	{
-		p = cv;
-		while (p->next)
-			p = p->next;
-		p->next = malloc(sizeof(t_cv));
-		if (!p->next)
+		if (*format == '%')
 		{
-			ft_cv_free(cv);
-			return (NULL);
+			if (!ft_strchr(CV_CHARS, *(++format)))
+				return (CV_ERRNO);
+			*cv = ft_cvrt_add_back(*cv, *format);
+			if (!*cv)
+				return (MALLOC_ERRNO);
 		}
-		p->next->elem = elem;
+		++format;
 	}
-	return (cv);
+	return (SUCCESS);
 }

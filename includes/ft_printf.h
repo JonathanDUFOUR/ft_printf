@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:02:07 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/05 02:40:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,20 @@ enum	e_ret
 	MALLOC_ERRNO
 };
 
-typedef struct s_cv	t_cv;
+typedef struct s_cvrt	t_cvrt;
 
-struct					s_cv
+struct					s_cvrt
 {
 	char	elem;
-	t_cv	*next;
+	t_cvrt	*next;
 };
 
 int		ft_printf(const char *format, ...);
 int		ft_multifree(int ret, uint32_t n, ...);
-int		ft_cv_get(t_cv **cv, char const *format);
-bool	ft_cv_is_valid(char const c);
-void	ft_cv_print(t_cv *cv);
-void	ft_cv_free(t_cv *cv);
-t_cv	*ft_cv_add_back(t_cv *cv, char const elem);
-t_cv	*ft_cv_new(char const elem);
+bool	ft_cvrt_is_valid(char const c);
+void	ft_cvrt_print(t_cvrt *cv);
+void	ft_cvrt_free(t_cvrt *cv);
+t_cvrt	*ft_cvrt_add_back(t_cvrt *cv, char const elem);
+t_cvrt	*ft_cvrt_new(char const elem);
 
 #endif

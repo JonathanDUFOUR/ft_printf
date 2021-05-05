@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cv_print.c                                      :+:      :+:    :+:   */
+/*   ft_cvrt_add_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 03:51:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 04:03:31 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/04 02:45:14 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/05 02:42:33 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "ft_printf.h"
-#include "libft.h"
 
-void	ft_cv_print(t_cv *cv)
+t_cvrt	*ft_cvrt_add_back(t_cvrt *cv, char const elem)
 {
-	while (cv)
+	t_cvrt	*p;
+
+	if (!cv)
+		return (ft_cvrt_new(elem));
+	else
 	{
-		ft_putchar_fd(cv->elem, 1);
-		cv = cv->next;
+		p = cv;
+		while (p->next)
+			p = p->next;
+		p->next = malloc(sizeof(t_cvrt));
+		if (!p->next)
+		{
+			ft_cvrt_free(cv);
+			return (NULL);
+		}
+		p->next->elem = elem;
 	}
-	ft_putchar_fd('\n', 1);
+	return (cv);
 }

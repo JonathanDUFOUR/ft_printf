@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cv_free.c                                       :+:      :+:    :+:   */
+/*   ft_cvrt_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 03:29:27 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/04 03:31:00 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/05 02:42:34 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_printf.h"
 
-void	ft_cv_free(t_cv *cv)
+void	ft_cvrt_free(t_cvrt *cv)
 {
-	t_cv	*dent;
+	t_cvrt	*dent;
 
 	while (cv)
 	{
