@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/05 19:36:06 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/07 04:32:33 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,18 +21,22 @@ MAKEDIR	=	mkdir -p
 RM		=	rm -rf
 
 FT_SRCS	=	\
+			ft_bzero.c		\
+			ft_strlen.c		\
+			ft_strchr.c		\
+			ft_putstr.c		\
+			ft_putnbr.c		\
+			ft_putlnbr.c	\
+			ft_putchar.c	\
+			ft_isdigit.c
 
 FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 
 SRCS	=	\
 			${FT_SRCS}			\
 			ft_printf.c			\
-			ft_queue_new.c		\
-			ft_queue_free.c		\
-			ft_queue_print.c	\
-			ft_queue_get_type.c	\
-			ft_queue_get_elem.c	\
-			ft_queue_add_back.c	\
+			ft_va_count.c		\
+			ft_check_style.c
 
 OBJS	=	${SRCS:.c=.o}
 OBJS	:=	${addprefix ${OBJD}, ${OBJS}}

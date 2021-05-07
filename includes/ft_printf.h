@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/05 22:02:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/07 04:45:52 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,33 @@
 # define LENGTH_MODIF	"hlqL"
 # define CONVERT_SPEC	"cspdiuxX%"
 
+typedef union u_unival	t_unival;
+
+union					u_unival
+{
+	float		f;
+	uint32_t	n;
+	void		*p;
+};
+
 enum	e_ret
 {
-	ERROR = -3,
-	CV_ERRNO = -2,
-	MALLOC_ERRNO = -1,
-	SUCCESS = 0
+	STYLE_ERRNO = -2,
+	MALLOC_ERRNO,
+	SUCCESS,
+	SIMPLE_STYLE,
+	DOLLAR_STYLE
+};
+
+enum	e_counts
+{
+	POURCENT,
+	DOLLAR,
+	STAR
 };
 
 int		ft_printf(const char *format, ...);
-ssize_t	ft_va_count(char const *format);
+int		ft_check_style(char const *format);
+size_t	ft_va_count(char const *format);
 
 #endif
