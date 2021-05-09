@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_get_arg_x.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/03 11:34:54 by jdufour           #+#    #+#             */
-/*   Updated: 2021/05/07 22:28:13 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/09 04:39:16 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/09 04:48:07 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdarg.h>
 
-int64_t	ft_atol(char const *s)
+void	ft_get_arg_x(char **to_print, va_list va)
 {
-	long	res;
-	int		sign;
+	unsigned int	x;
 
-	res = 0;
-	sign = 1;
-	while (ft_isspace(*s))
-		++s;
-	if (*s == '-' || *s == '+')
-		if (*s++ == '-')
-			sign ^= ~1u;
-	while (ft_isdigit(*s))
-		res = res * 10 + *s++ - '0';
-	return (res * sign);
+	x = va_arg(va, unsigned int);
 }

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:58:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/07 05:08:49 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/09 04:36:42 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,21 @@
 
 int	ft_printf(const char *format, ...)
 {
-	va_list		va;
-	size_t		va_count;
-	t_unival	*values;
-	int			ret;
+	va_list	va;
+	char	*to_print;
+	int		ret;
 
-	va_count = ft_va_count(format);
-	ret = ft_check_style(format);
-	if (ret == SIMPLE_STYLE)
+	to_print = NULL;
+	va_start(va, format);
+	while (*format)
 	{
+		if (*format == '%')
+		{
+			format = ft_manage_arg(format + 1, &to_print, va);
+		}
+		else
+			++format;
 	}
-	else if (ret == DOLLAR_STYLE)
-	{
-	}
-	else
-		return (STYLE_ERRNO);
+	va_end(va);
 	return (42);
 }

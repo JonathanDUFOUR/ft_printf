@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_va_count.c                                      :+:      :+:    :+:   */
+/*   ft_get_arg_u.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 19:34:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/07 02:53:01 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/09 04:39:05 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/09 04:47:06 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include "ft_printf.h"
-#include "libft.h"
+#include <stdarg.h>
 
-size_t	ft_va_count(char const *format)
+void	ft_get_arg_u(char **to_print, va_list va)
 {
-	size_t	count;
+	unsigned int	u;
 
-	count = 0;
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			++count;
-			++format;
-			while (!ft_strchr(CONVERT_SPEC, *format))
-				++format;
-		}
-		++format;
-	}
-	return (count);
+	u = va_arg(va, unsigned int);
 }

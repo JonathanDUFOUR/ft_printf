@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/07 04:45:52 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/09 04:42:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,25 @@
 # include <stdarg.h>
 
 # define FLAG_CHARS		"#0- +'I"
-# define FIELD_WIDTH	"0123456789"
 # define PRECI_CHARS	"."
-# define LENGTH_MODIF	"hlqL"
+# define LEN_MODIF		"hlqL"
 # define CONVERT_SPEC	"cspdiuxX%"
-
-typedef union u_unival	t_unival;
-
-union					u_unival
-{
-	float		f;
-	uint32_t	n;
-	void		*p;
-};
 
 enum	e_ret
 {
-	STYLE_ERRNO = -2,
-	MALLOC_ERRNO,
-	SUCCESS,
-	SIMPLE_STYLE,
-	DOLLAR_STYLE
+	MALLOC_ERRNO = -1,
+	SUCCESS
 };
 
-enum	e_counts
-{
-	POURCENT,
-	DOLLAR,
-	STAR
-};
-
-int		ft_printf(const char *format, ...);
-int		ft_check_style(char const *format);
-size_t	ft_va_count(char const *format);
+int			ft_printf(const char *format, ...);
+char const	*ft_manage_arg(char const *format, char **to_print, va_list va);
+char const	*ft_manage_spec(char const *format, char **to_print, va_list va);
+void		ft_get_arg_c(char **to_print, va_list va);
+void		ft_get_arg_s(char **to_print, va_list va);
+void		ft_get_arg_p(char **to_print, va_list va);
+void		ft_get_arg_d_i(char **to_print, va_list va);
+void		ft_get_arg_u(char **to_print, va_list va);
+void		ft_get_arg_x(char **to_print, va_list va);
+void		ft_get_arg_X(char **to_print, va_list va);
 
 #endif

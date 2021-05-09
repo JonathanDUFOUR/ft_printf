@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_atou.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/03 11:34:54 by jdufour           #+#    #+#             */
-/*   Updated: 2021/05/07 22:28:13 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/07 21:59:08 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/07 22:28:26 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int64_t	ft_atol(char const *s)
+uint32_t	ft_atou(char const *s)
 {
-	long	res;
-	int		sign;
+	unsigned int	output;
 
-	res = 0;
-	sign = 1;
+	output = 0;
 	while (ft_isspace(*s))
 		++s;
-	if (*s == '-' || *s == '+')
-		if (*s++ == '-')
-			sign ^= ~1u;
+	if (*s == '+')
+		++s;
 	while (ft_isdigit(*s))
-		res = res * 10 + *s++ - '0';
-	return (res * sign);
+		output = output * 10 + *s++ - '0';
+	return (output);
 }
