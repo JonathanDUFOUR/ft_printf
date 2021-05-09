@@ -6,33 +6,47 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:58:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 04:36:42 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/09 06:54:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <stdarg.h>
 #include "ft_printf.h"
 #include "libft.h"
 
+static int	ft_clean_n_quit(int ret, char *print, va_list va)
+{
+	va_end(va);
+	free(print);
+	return (ret);
+}
+
 int	ft_printf(const char *format, ...)
 {
-	va_list	va;
-	char	*to_print;
-	int		ret;
+	char		*print;
+	int			len;
+	va_list		va;
 
-	to_print = NULL;
+	print = NULL;
 	va_start(va, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
-			format = ft_manage_arg(format + 1, &to_print, va);
+			format = ft_manage_arg(format + 1, &print, va);
+			if (!format)
+				return (ft_clean_n_quit(MALLOC_ERRNO, print, va));
 		}
 		else
-			++format;
+		{
+			format = ft_manage_text(format, &print);
+			if (!format)
+				return (ft_clean_n_quit(MALLOC_ERRNO, print, va));
+		}
 	}
-	va_end(va);
-	return (42);
+	len = (int)ft_strlen(print);
+	write(1, print, len);
+	return (ft_clean_n_quit(len, print, va));
 }

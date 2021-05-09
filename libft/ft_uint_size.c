@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_arg_d_i.c                                   :+:      :+:    :+:   */
+/*   ft_uint_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 04:38:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 05:55:39 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/09 05:36:06 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/09 06:09:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdarg.h>
-#include "libft.h"
+#include <stdint.h>
+#include <sys/types.h>
 
-char	*ft_get_arg_d_i(char *print, va_list va)
+size_t	ft_uint_size(uint32_t n)
 {
-	int		n;
-	char	*output;
-	char	*dent;
+	size_t	size;
 
-	n = va_arg(va, int);
-	dent = ft_itoa(n);
-	if (!dent)
-		return (NULL);
-	output = ft_strjoin(print, dent);
-	free(dent);
-	return (output);
+	size = 1;
+	n /= 10;
+	while (n)
+	{
+		++size;
+		n /= 10;
+	}
+	return (size);
 }

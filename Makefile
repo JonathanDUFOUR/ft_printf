@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/09 04:37:52 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/09 06:39:37 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,26 @@ MAKEDIR	=	mkdir -p
 RM		=	rm -rf
 
 FT_SRCS	=	\
-			ft_strchr.c
+			ft_bzero.c		\
+			ft_calloc.c		\
+			ft_ctoa.c		\
+			ft_int_size.c	\
+			ft_itoa.c		\
+			ft_memcpy.c		\
+			ft_strchr.c		\
+			ft_strdup.c		\
+			ft_strjoin.c	\
+			ft_strlen.c		\
+			ft_strndup.c	\
+			ft_uint_size.c	\
+			ft_utoa.c		\
 
 FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 
 SRCS	=	\
 			${FT_SRCS}			\
 			ft_printf.c			\
+			ft_get_text.c		\
 			ft_get_arg_c.c		\
 			ft_get_arg_s.c		\
 			ft_get_arg_p.c		\
@@ -36,7 +49,8 @@ SRCS	=	\
 			ft_get_arg_x.c		\
 			ft_get_arg_X.c		\
 			ft_manage_arg.c		\
-			ft_manage_spec.c
+			ft_manage_spec.c	\
+			ft_manage_text.c
 
 OBJS	=	${SRCS:.c=.o}
 OBJS	:=	${addprefix ${OBJD}, ${OBJS}}

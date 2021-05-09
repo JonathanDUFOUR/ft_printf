@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_arg_d_i.c                                   :+:      :+:    :+:   */
+/*   ft_manage_text.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 04:38:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 05:55:39 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/09 06:37:06 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/09 06:42:29 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdarg.h>
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_get_arg_d_i(char *print, va_list va)
+char const	*ft_manage_text(char const *format, char **print)
 {
-	int		n;
-	char	*output;
-	char	*dent;
+	char const	*dent = *print;
 
-	n = va_arg(va, int);
-	dent = ft_itoa(n);
-	if (!dent)
-		return (NULL);
-	output = ft_strjoin(print, dent);
+	*print = ft_get_text(format, *print);
 	free(dent);
-	return (output);
+	if (!*print)
+		return (NULL);
+	while (*format && *format != '%')
+		++format;
+	return (format);
 }

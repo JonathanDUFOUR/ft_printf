@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 03:15:16 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 04:36:38 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/09 05:55:10 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-char const	*ft_manage_arg(char const *format, char **to_print, va_list va)
+char const	*ft_manage_arg(char const *format, char **print, va_list va)
 {
-	format = ft_manage_spec(format, to_print, va);
+	format = ft_manage_spec(format, print, va);
 	return (format);
 }

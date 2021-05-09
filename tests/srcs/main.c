@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/07 23:12:22 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/09 06:43:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(void)
 {
 	int	ret;
 
-	ret = ft_printf("%4$*1$*3$d\n");
+	ret = ft_printf("Babar a %d ans et son pere en a %u\n", -2147483648, 2147483650);
 	printf("ret -> %d\n", ret);
 	return (SUCCESS);
 }

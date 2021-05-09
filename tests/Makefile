@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 02:13:29 by jodufour          #+#    #+#              #
-#    Updated: 2021/04/30 20:13:17 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/09 06:46:48 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,10 @@ DEPS	=	${OBJS:.o=.d}
 
 CFLAGS	=	-Wall -Wextra -I ${INCLUDE} -MMD
 LDFLAGS	=	
+
+ifeq (${DEBUG}, true)
+	CFLAGS	+=	-g
+endif
 
 ${NAME}:	${OBJS}
 	make -C ../ 

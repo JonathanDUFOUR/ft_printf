@@ -6,15 +6,25 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:39:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 04:47:06 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/09 06:02:44 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdarg.h>
+#include "libft.h"
 
-void	ft_get_arg_u(char **to_print, va_list va)
+char	*ft_get_arg_u(char *print, va_list va)
 {
-	unsigned int	u;
+	uint32_t	n;
+	char		*output;
+	char		*dent;
 
-	u = va_arg(va, unsigned int);
+	n = va_arg(va, uint32_t);
+	dent = ft_utoa(n);
+	if (!dent)
+		return (NULL);
+	output = ft_strjoin(print, dent);
+	free(dent);
+	return (output);
 }

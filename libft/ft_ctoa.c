@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_arg_d_i.c                                   :+:      :+:    :+:   */
+/*   ft_ctoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 04:38:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 05:55:39 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/09 04:58:21 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/09 05:00:17 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdarg.h>
-#include "libft.h"
 
-char	*ft_get_arg_d_i(char *print, va_list va)
+char	*ft_ctoa(char const c)
 {
-	int		n;
-	char	*output;
-	char	*dent;
+	char	*s;
 
-	n = va_arg(va, int);
-	dent = ft_itoa(n);
-	if (!dent)
+	s = malloc(2 * sizeof(char));
+	if (!s)
 		return (NULL);
-	output = ft_strjoin(print, dent);
-	free(dent);
-	return (output);
+	*s = c;
+	*(s + 1) = 0;
+	return (s);
 }

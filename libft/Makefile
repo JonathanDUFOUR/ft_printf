@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/15 11:52:33 by jojo              #+#    #+#              #
-#    Updated: 2021/05/07 22:07:24 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/09 06:08:44 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS		=	ft_atoi_base.c			\
 				ft_calloc.c				\
 				ft_cat.c				\
 				ft_convert_base.c		\
+				ft_ctoa.c				\
 				ft_cut_spaces.c			\
 				ft_file_size.c			\
 				ft_find_next_prime.c	\
@@ -124,9 +125,11 @@ SRCS		=	ft_atoi_base.c			\
 				ft_toggle_nbyte.c		\
 				ft_tolower.c			\
 				ft_toupper.c			\
+				ft_uint_size.c			\
 				ft_ultimate_tolower.c	\
 				ft_ultimate_toupper.c	\
 				ft_unset_bit.c			\
+				ft_utoa.c				\
 				ft_wrong_base.c
 
 OBJS		:=	${SRCS:.c=.o}
