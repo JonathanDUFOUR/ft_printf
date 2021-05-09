@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 06:38:00 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/09 07:04:22 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ int			ft_printf(const char *format, ...);
 char const	*ft_manage_arg(char const *format, char **print, va_list va);
 char const	*ft_manage_spec(char const *format, char **print, va_list va);
 char const	*ft_manage_text(char const *format, char **print);
-char		*ft_get_arg_c(char *to_print, va_list va);
-char		*ft_get_arg_s(char *to_print, va_list va);
-char		*ft_get_arg_p(char *to_print, va_list va);
-char		*ft_get_arg_d_i(char *to_print, va_list va);
-char		*ft_get_arg_u(char *to_print, va_list va);
-char		*ft_get_arg_x(char *to_print, va_list va);
-char		*ft_get_arg_X(char *to_print, va_list va);
-char		*ft_get_text(char *format, char *print);
+char		*ft_get_arg_c(char *print, va_list va);
+char		*ft_get_arg_d_i(char *print, va_list va);
+char		*ft_get_arg_p(char *print, va_list va);
+char		*ft_get_arg_prct(char *print);
+char		*ft_get_arg_s(char *print, va_list va);
+char		*ft_get_arg_u(char *print, va_list va);
+char		*ft_get_arg_x(char *print, va_list va);
+char		*ft_get_arg_X(char *print, va_list va);
+char		*ft_get_text(char const *format, char *print);
 
 #endif

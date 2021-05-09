@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:20:34 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 05:55:17 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/09 06:58:27 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ char const	*ft_manage_spec(char const *format, char **print, va_list va)
 	else if (*format == 'X')
 		*print = ft_get_arg_X(*print, va);
 	else if (*format == '%')
-	{
-		;
-	}
+		*print = ft_get_arg_prct(*print);
 	free((char *)dent);
 	if (!*print)
 		return (NULL);

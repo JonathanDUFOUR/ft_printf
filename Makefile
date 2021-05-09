@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/09 06:39:37 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/09 07:01:56 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,10 @@ SRCS	=	\
 			ft_printf.c			\
 			ft_get_text.c		\
 			ft_get_arg_c.c		\
-			ft_get_arg_s.c		\
-			ft_get_arg_p.c		\
 			ft_get_arg_d_i.c	\
+			ft_get_arg_p.c		\
+			ft_get_arg_prct.c	\
+			ft_get_arg_s.c		\
 			ft_get_arg_u.c		\
 			ft_get_arg_x.c		\
 			ft_get_arg_X.c		\
