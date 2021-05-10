@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/09 07:01:56 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/10 02:28:02 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ FT_SRCS	=	\
 			ft_calloc.c		\
 			ft_ctoa.c		\
 			ft_int_size.c	\
+			ft_isspace.c	\
 			ft_itoa.c		\
 			ft_memcpy.c		\
 			ft_strchr.c		\
@@ -34,6 +35,8 @@ FT_SRCS	=	\
 			ft_strndup.c	\
 			ft_uint_size.c	\
 			ft_utoa.c		\
+			ft_utoa_base.c	\
+			ft_wrong_base.c
 
 FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 
@@ -60,6 +63,10 @@ DEPS		=	${OBJS:.o=.d}
 
 CFLAGS		=	-Wextra -Wall -MMD -I ${INCLUDE}
 LDFLAGS		=
+
+ifeq (${DEBUG}, true)
+	CFLAGS	+=	-g
+endif
 
 ${NAME}:	${OBJS}
 	${LINKER} $@ ${LDFLAGS} ${OBJS}
