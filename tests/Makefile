@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 02:13:29 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/09 06:46:48 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/10 21:54:56 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ clean:
 	${RM} ${OBJD}
 
 fclean:
-	${RM} ${OBJD} ${NAME}
+	${RM} ${LIBPATH}${OBJD} ${OBJD} ${NAME}
 
 re:	fclean all
 

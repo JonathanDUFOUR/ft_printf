@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:58:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 06:54:05 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/10 21:51:02 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_clean_n_quit(int ret, char *print, va_list va)
 	return (ret);
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(char const *format, ...)
 {
 	char		*print;
 	int			len;

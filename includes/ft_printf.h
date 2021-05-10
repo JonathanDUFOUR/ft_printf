@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 07:04:22 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/10 21:50:19 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ enum	e_ret
 	SUCCESS
 };
 
-int			ft_printf(const char *format, ...);
+int			ft_printf(char const *format, ...);
 char const	*ft_manage_arg(char const *format, char **print, va_list va);
 char const	*ft_manage_spec(char const *format, char **print, va_list va);
 char const	*ft_manage_text(char const *format, char **print);
