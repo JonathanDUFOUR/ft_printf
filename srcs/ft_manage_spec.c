@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:20:34 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 06:58:27 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/12 00:57:32 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
-char const	*ft_manage_spec(char const *format, char **print, va_list va)
+char const	*ft_manage_spec(char const *format, t_ctx *ctx, va_list va)
 {
-	char const	*dent = *print;
+	char	*dent;
 
+	dent = ctx->print;
 	if (*format == 'c')
-		*print = ft_get_arg_c(*print, va);
+		ctx->print = ft_get_arg_c(ctx->print, va);
 	else if (*format == 's')
-		*print = ft_get_arg_s(*print, va);
+		ctx->print = ft_get_arg_s(ctx->print, va);
 	else if (*format == 'p')
-		*print = ft_get_arg_p(*print, va);
+		ctx->print = ft_get_arg_p(ctx->print, va);
 	else if (*format == 'd' || *format == 'i')
-		*print = ft_get_arg_d_i(*print, va);
+		ctx->print = ft_get_arg_d_i(ctx->print, va);
 	else if (*format == 'u')
-		*print = ft_get_arg_u(*print, va);
+		ctx->print = ft_get_arg_u(ctx->print, va);
 	else if (*format == 'x')
-		*print = ft_get_arg_x(*print, va);
+		ctx->print = ft_get_arg_x(ctx->print, va);
 	else if (*format == 'X')
-		*print = ft_get_arg_X(*print, va);
+		ctx->print = ft_get_arg_X(ctx->print, va);
 	else if (*format == '%')
-		*print = ft_get_arg_prct(*print);
-	free((char *)dent);
-	if (!*print)
+		ctx->print = ft_get_arg_prct(ctx->print);
+	free(dent);
+	if (!ctx->print)
 		return (NULL);
 	return (format + 1);
 }

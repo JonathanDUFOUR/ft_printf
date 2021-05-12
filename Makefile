@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/10 22:09:46 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/11 17:52:17 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRCS	=	\
 			ft_get_arg_x.c		\
 			ft_get_arg_X.c		\
 			ft_manage_arg.c		\
+			ft_manage_flags.c	\
 			ft_manage_spec.c	\
 			ft_manage_text.c
 
