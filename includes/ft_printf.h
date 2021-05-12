@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/12 00:52:37 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/12 03:03:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 # include <stdint.h>
 # include <stdarg.h>
 
-# define FLAG_CHARS		"-0.*"
-# define PRECI_CHARS	"."
+/* Remove it when finished */
+# include <stdio.h>
+
+# define FLAG_CHARS		"-0"
+# define PRECI_CHAR		"."
 # define LEN_MODIF		"hlqL"
 # define CONVERT_SPEC	"cspdiuxX%"
 
@@ -26,10 +29,10 @@ typedef struct s_ctx	t_ctx;
 
 struct s_ctx
 {
-	char	*print;
-	char	flags;
-	char	padding;
-	int		field_width;
+	char		*print;
+	uint8_t		flags;
+	char		padding;
+	uint32_t	field_width;
 };
 
 enum	e_ret
