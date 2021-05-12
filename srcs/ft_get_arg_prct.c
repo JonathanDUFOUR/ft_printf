@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 06:58:39 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 07:04:42 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/12 20:20:56 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ char	*ft_get_arg_prct(char *print)
 	if (!dent)
 		return (NULL);
 	output = ft_strjoin(print, dent);
-	free((char *)dent);
+	free(dent);
 	return (output);
 }

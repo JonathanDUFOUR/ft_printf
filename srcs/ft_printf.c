@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:58:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/12 03:09:51 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/12 21:45:38 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static t_ctx	*ft_init_ctx(void)
 	ctx->padding = 0;
 	ctx->field_width = 0;
 	return (ctx);
-	
 }
 
 static int	ft_clean_n_quit(int ret, t_ctx *ctx, va_list va)
