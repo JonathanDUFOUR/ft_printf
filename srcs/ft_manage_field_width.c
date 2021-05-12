@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_arg_X.c                                     :+:      :+:    :+:   */
+/*   ft_manage_field_width.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 04:39:27 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/12 22:30:01 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/12 23:43:37 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/12 23:55:02 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdarg.h>
-#include "libft.h"
 #include "ft_printf.h"
+#include "libft.h"
 
-char	*ft_get_arg_X(t_ctx *ctx, va_list va)
+char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va)
 {
-	uint32_t	X;
-	char		*output;
-	char		*dent;
-
-	X = va_arg(va, uint32_t);
-	dent = ft_utoa_base(X, "0123456789ABCDEF");
-	if (!dent)
-		return (NULL);
-	output = ft_strjoin(ctx->print, dent);
-	free(dent);
-	return (output);
+	if (*format == '*')
+	{
+		ctx->field_width = va_arg(va, uint32_t);
+		++format;
+	}
+	else
+	{
+		ctx->field_width = ft_atou(format);
+		while (ft_isdigit(*format))
+			++format;
+	}
+	return (format);
 }

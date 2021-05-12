@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/12 20:35:45 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/12 23:58:49 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,18 @@ enum	e_ret
 
 int			ft_printf(char const *format, ...);
 char const	*ft_manage_arg(char const *format, t_ctx *ctx, va_list va);
-char const	*ft_manage_flags(char const *format, t_ctx *ctx, va_list va);
+char const	*ft_manage_flags(char const *format, t_ctx *ctx);
+char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_spec(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_text(char const *format, t_ctx *ctx);
-char		*ft_get_arg_c(char *print, va_list va);
-char		*ft_get_arg_d_i(char *print, va_list va);
-char		*ft_get_arg_p(char *print, va_list va);
-char		*ft_get_arg_prct(char *print);
-char		*ft_get_arg_s(char *print, va_list va);
-char		*ft_get_arg_u(char *print, va_list va);
-char		*ft_get_arg_x(char *print, va_list va);
-char		*ft_get_arg_X(char *print, va_list va);
+char		*ft_get_arg_c(t_ctx *ctx, va_list va);
+char		*ft_get_arg_d_i(t_ctx *ctx, va_list va);
+char		*ft_get_arg_p(t_ctx *ctx, va_list va);
+char		*ft_get_arg_prct(t_ctx *ctx);
+char		*ft_get_arg_s(t_ctx *ctx, va_list va);
+char		*ft_get_arg_u(t_ctx *ctx, va_list va);
+char		*ft_get_arg_x(t_ctx *ctx, va_list va);
+char		*ft_get_arg_X(t_ctx *ctx, va_list va);
 char		*ft_get_text(char const *format, char *print);
 
 #endif

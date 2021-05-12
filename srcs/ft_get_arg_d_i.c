@@ -6,15 +6,16 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 05:55:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/12 22:26:37 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdarg.h>
 #include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_get_arg_d_i(char *print, va_list va)
+char	*ft_get_arg_d_i(t_ctx *ctx, va_list va)
 {
 	int		n;
 	char	*output;
@@ -24,7 +25,7 @@ char	*ft_get_arg_d_i(char *print, va_list va)
 	dent = ft_itoa(n);
 	if (!dent)
 		return (NULL);
-	output = ft_strjoin(print, dent);
+	output = ft_strjoin(ctx->print, dent);
 	free(dent);
 	return (output);
 }
