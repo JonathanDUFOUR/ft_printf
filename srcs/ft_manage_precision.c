@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_manage_field_width.c                            :+:      :+:    :+:   */
+/*   ft_manage_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/12 23:43:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/13 16:50:26 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/13 16:21:56 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/13 16:48:42 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va)
+char const	*ft_manage_precision(char const *format, t_ctx *ctx, va_list va)
 {
-	if (*format == '*')
+	if (*format == '.')
 	{
-		ctx->field_width = va_arg(va, uint32_t);
-		++format;
-	}
-	else
-	{
-		ctx->field_width = ft_atou(format);
-		while (ft_isdigit(*format))
+		if (*++format == '*')
+		{
+			ctx->precision = va_arg(va, uint32_t);
 			++format;
+		}
+		else
+		{
+			ctx->precision = ft_atou(format);
+			while (ft_isdigit(*format))
+				++format;
+		}
 	}
 	return (format);
 }

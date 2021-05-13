@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/12 23:58:49 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/13 16:28:09 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ struct s_ctx
 	uint8_t		flags;
 	char		padding;
 	uint32_t	field_width;
+	uint32_t	precision;
 };
 
 enum	e_ret
@@ -45,7 +46,8 @@ int			ft_printf(char const *format, ...);
 char const	*ft_manage_arg(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_flags(char const *format, t_ctx *ctx);
 char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va);
-char const	*ft_manage_spec(char const *format, t_ctx *ctx, va_list va);
+char const	*ft_manage_precision(char const *format, t_ctx *ctx, va_list va);
+char const	*ft_manage_specifier(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_text(char const *format, t_ctx *ctx);
 char		*ft_get_arg_c(t_ctx *ctx, va_list va);
 char		*ft_get_arg_d_i(t_ctx *ctx, va_list va);

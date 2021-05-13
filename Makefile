@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/12 23:47:39 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/13 16:41:27 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,8 @@ SRCS	=	\
 			ft_manage_arg.c			\
 			ft_manage_flags.c		\
 			ft_manage_field_width.c	\
-			ft_manage_spec.c		\
+			ft_manage_precision.c	\
+			ft_manage_specifier.c	\
 			ft_manage_text.c
 
 OBJS	=	${SRCS:.c=.o}

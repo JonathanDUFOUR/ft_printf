@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_manage_spec.c                                   :+:      :+:    :+:   */
+/*   ft_manage_specifier.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:20:34 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/12 22:24:29 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/13 16:24:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
-char const	*ft_manage_spec(char const *format, t_ctx *ctx, va_list va)
+char const	*ft_manage_specifier(char const *format, t_ctx *ctx, va_list va)
 {
 	char	*dent;
 
