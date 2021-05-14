@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/14 03:37:24 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/14 15:22:52 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ FT_SRCS	=	\
 			ft_strjoin.c	\
 			ft_strlen.c		\
 			ft_strndup.c	\
-			ft_uint_size.c	\
+			ft_uintlen.c	\
 			ft_utoa.c		\
 			ft_utoa_base.c	\
 			ft_wrong_base.c
@@ -64,7 +64,8 @@ SRCS	=	\
 			ft_manage_field_width.c	\
 			ft_manage_precision.c	\
 			ft_manage_specifier.c	\
-			ft_manage_text.c
+			ft_manage_text.c		\
+			ft_right_padding.c
 
 OBJS	=	${SRCS:.c=.o}
 OBJS	:=	${addprefix ${OBJD}, ${OBJS}}

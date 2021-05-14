@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utoa.c                                          :+:      :+:    :+:   */
+/*   ft_right_padding.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 05:31:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/14 12:10:36 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/14 15:21:50 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/14 15:22:11 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <sys/types.h>
 #include "libft.h"
 
-char	*ft_utoa(uint32_t n)
+char	*ft_right_padding(char *output, char *dent, int c, int field_width)
 {
-	char	*output;
-	size_t	len;
+	int		padlen;
+	char	*padding;
+	char	*p;
 
-	len = ft_uintlen(n);
-	output = malloc((len + 1) * sizeof(char));
-	if (!output)
-		return (NULL);
-	output[len] = 0;
-	while (len && n)
+	padlen = field_width - (int)ft_strlen(dent);
+	if (padlen > 0)
 	{
-		output[--len] = (n % 10) + '0';
-		n /= 10;
+		padding = malloc((padlen + 1) * sizeof(char));
+		if (!padding)
+		{
+			free(output);
+			return (NULL);
+		}
+		p = padding;
+		while (padlen--)
+			*p++ = c;
+		*p = 0;
+		p = output;
+		output = ft_strjoin(output, padding);
+		free(p);
+		free(padding);
 	}
 	return (output);
 }

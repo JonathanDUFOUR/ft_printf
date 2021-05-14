@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/14 03:19:28 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/14 15:23:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ char		*ft_get_arg_u(t_ctx *ctx, va_list va);
 char		*ft_get_arg_x(t_ctx *ctx, va_list va);
 char		*ft_get_arg_X(t_ctx *ctx, va_list va);
 char		*ft_get_text(char const *format, char *print);
+char		*ft_right_padding(char *output, char *dent, int c, int field_width);
 
 #endif
