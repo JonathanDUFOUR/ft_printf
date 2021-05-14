@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/13 16:41:27 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/13 20:33:08 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ MAKEDIR	=	mkdir -p
 RM		=	rm -rf
 
 FT_SRCS	=	\
+			ft_atoi.c		\
 			ft_atou.c		\
 			ft_bzero.c		\
 			ft_calloc.c		\

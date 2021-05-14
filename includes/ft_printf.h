@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/13 16:28:09 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/14 02:01:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ typedef struct s_ctx	t_ctx;
 
 struct s_ctx
 {
-	char		*print;
-	uint8_t		flags;
-	char		padding;
-	uint32_t	field_width;
-	uint32_t	precision;
+	char	*print;
+	uint8_t	flags;
+	char	padding;
+	int		field_width;
+	int		precision;
 };
 
 enum	e_ret
