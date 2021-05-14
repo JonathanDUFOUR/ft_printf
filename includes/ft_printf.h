@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/14 02:01:03 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/14 03:19:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,14 @@ struct s_ctx
 {
 	char	*print;
 	uint8_t	flags;
-	char	padding;
 	int		field_width;
 	int		precision;
+};
+
+enum	e_padding_side
+{
+	LEFT,
+	RIGHT
 };
 
 enum	e_ret

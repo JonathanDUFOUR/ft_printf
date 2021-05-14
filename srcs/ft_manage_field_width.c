@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 23:43:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/13 20:32:50 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/14 02:21:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va)
 		if (ctx->field_width >> 31)
 		{
 			ctx->flags |= 1 << 0;
-			ctx->padding = ' ';
 			ctx->field_width *= -1;
 		}
 		++format;
