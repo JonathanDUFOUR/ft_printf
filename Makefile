@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/13 20:33:08 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/14 03:37:24 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ FT_SRCS	=	\
 			ft_bzero.c		\
 			ft_calloc.c		\
 			ft_ctoa.c		\
-			ft_int_size.c	\
+			ft_intlen.c		\
 			ft_isspace.c	\
 			ft_isdigit.c	\
 			ft_itoa.c		\
