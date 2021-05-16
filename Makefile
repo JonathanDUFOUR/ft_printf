@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/14 15:22:52 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/16 06:30:55 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ SRCS	=	\
 			ft_manage_precision.c	\
 			ft_manage_specifier.c	\
 			ft_manage_text.c		\
-			ft_right_padding.c
+			ft_xlen.c
 
 OBJS	=	${SRCS:.c=.o}
 OBJS	:=	${addprefix ${OBJD}, ${OBJS}}

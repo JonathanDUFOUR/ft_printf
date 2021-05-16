@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/14 15:23:23 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 06:31:00 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ typedef struct s_ctx	t_ctx;
 
 struct s_ctx
 {
-	char	*print;
-	uint8_t	flags;
-	int		field_width;
-	int		precision;
+	char		*print;
+	uint8_t		flags;
+	uint32_t	field_width;
+	uint32_t	precision;
 };
 
 enum	e_padding_side
@@ -63,6 +63,6 @@ char		*ft_get_arg_u(t_ctx *ctx, va_list va);
 char		*ft_get_arg_x(t_ctx *ctx, va_list va);
 char		*ft_get_arg_X(t_ctx *ctx, va_list va);
 char		*ft_get_text(char const *format, char *print);
-char		*ft_right_padding(char *output, char *dent, int c, int field_width);
+uint32_t	ft_xlen(uint32_t n);
 
 #endif

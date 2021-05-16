@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_xlen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/21 06:23:21 by jdufour           #+#    #+#             */
-/*   Updated: 2021/05/15 16:20:22 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/16 06:29:14 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/16 06:31:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include <stdint.h>
 
-char	*ft_itoa(int n)
+uint32_t	ft_xlen(uint32_t n)
 {
-	char		*output;
 	uint32_t	len;
 
-	len = ft_intlen(n);
-	output = malloc((len + 1) * sizeof(char));
-	if (!output)
-		return (NULL);
-	output += len;
-	*output-- = 0;
-	while (n && len--)
+	len = 1;
+	while (n > 15)
 	{
-		*output-- = (-(n < 0) | 1) * (n % 10) + '0';
-		n /= 10;
+		++len;
+		n /= 16;
 	}
-	if (len)
-		*output-- = '-';
-	return (++output);
+	return (len);
 }

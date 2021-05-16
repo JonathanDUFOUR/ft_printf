@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:39:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/14 15:23:52 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 06:23:27 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,71 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-static char	*ft_padded_utoa(uint32_t n, int c, uint32_t padlen)
+static uint32_t	ft_get_padlen(uint32_t field_width, uint32_t precision)
 {
-	uint32_t	len;
-	char		*output;
-	char		*p;
+	if (field_width > precision)
+		return (field_width - precision);
+	return (0);
+}
 
-	len = ft_uintlen(n) + padlen;
+static char	*ft_add_padding(char *output, uint32_t padlen, int c)
+{
+	while (padlen--)
+		*output-- = c;
+	return (output);
+}
+
+static char	*ft_fill_output(char *output, uint32_t n, uint32_t precision)
+{
+	while (precision--)
+	{
+		*output-- = n % 10 + '0';
+		n /= 10;
+	}
+	return (output);
+}
+
+static char	*ft_padded_utoa(uint32_t n, t_ctx *ctx)
+{
+	char		*output;
+	uint32_t	len;
+
+	len = (ctx->precision > ctx->field_width) * ctx->precision
+		+ (ctx->field_width >= ctx->precision) * ctx->field_width;
 	output = malloc((len + 1) * sizeof(char));
 	if (!output)
 		return (NULL);
-	p = output + len;
-	*p-- = 0;
-	while (n && --len)
+	output += len;
+	*output-- = 0;
+	ctx->field_width = ft_get_padlen(ctx->field_width, ctx->precision);
+	if (ctx->flags & (1 << 0))
+		output = ft_add_padding(output, ctx->field_width, ' ');
+	output = ft_fill_output(output, n, ctx->precision);
+	if (!(ctx->flags & (1 << 0)))
 	{
-		*p-- = (n % 10) + '0';
-		n /= 10;
+		if (ctx->flags & (1 << 1))
+			output = ft_add_padding(output, ctx->field_width, '0');
+		else
+			output = ft_add_padding(output, ctx->field_width, ' ');
 	}
-	while (len--)
-		*p-- = c;
-	return (output);
+	return (++output);
 }
 
 char	*ft_get_arg_u(t_ctx *ctx, va_list va)
 {
 	uint32_t	n;
-	int			digits;
+	uint32_t	digits;
 	char		*output;
 	char		*dent;
 
 	n = va_arg(va, uint32_t);
-	digits = (int)ft_uintlen(n);
-	if (ctx->precision > digits)
-		dent = ft_padded_utoa(n, '0', ctx->precision - digits);
-	else if ((ctx->flags & (1 << 1)) && !(ctx->flags & (1 << 0))
-		&& ctx->field_width > digits)
-		dent = ft_padded_utoa(n, '0', ctx->field_width - digits);
-	else
-		dent = ft_utoa(n);
+	digits = ft_uintlen(n);
+	if (digits > ctx->precision)
+		ctx->precision = digits;
+	dent = ft_padded_utoa(n, ctx);
 	if (!dent)
 		return (NULL);
 	output = ft_strjoin(ctx->print, dent);
-	if (output && (ctx->flags & (1 << 0)))
-		output = ft_right_padding(output, dent, ' ', ctx->field_width);
 	free(dent);
 	return (output);
 }
