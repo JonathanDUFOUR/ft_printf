@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:29:36 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 11:57:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 12:57:19 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int	ft_padded_putchar(int c, uint8_t flags, uint32_t field_width)
 	write(1, &c, 1);
 	if (flags & (1 << 0))
 		write(1, padding, field_width - 1);
+	free(padding);
 	return (SUCCESS);
 }
 
