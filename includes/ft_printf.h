@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 15:50:53 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 17:58:41 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,12 @@
 # define LEN_MODIF		"hlqL"
 # define CONVERT_SPEC	"cspdiuxX%"
 
-# define FT_ABS(n) ((n < 0) * (-n) + (n >= 0) * n)
-
 typedef struct s_ctx	t_ctx;
 
 struct s_ctx
 {
 	uint32_t	len;
 	uint8_t		flags;
-	uint8_t		errors;
 	uint32_t	field_width;
 	uint32_t	precision;
 };

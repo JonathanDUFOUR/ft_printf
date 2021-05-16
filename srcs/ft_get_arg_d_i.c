@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 17:26:06 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 17:58:33 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	ft_padded_putnbr(int n, uint32_t intlen, t_ctx *ctx)
 		write(1, padding, padlen);
 		free(padding);
 	}
-	ft_putunbr(FT_ABS(n));
+	ft_putunbr((n < 0) * (-n) + (n >= 0) * n);
 	if (ctx->flags & (1 << 0))
 	{
 		padlen = ctx->field_width - ctx->precision - (n < 0);
