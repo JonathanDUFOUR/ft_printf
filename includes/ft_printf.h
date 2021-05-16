@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 06:31:00 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 08:06:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ struct s_ctx
 enum	e_padding_side
 {
 	LEFT,
-	RIGHT
+	RIGHT,
+	NONE
 };
 
 enum	e_ret
@@ -63,6 +64,7 @@ char		*ft_get_arg_u(t_ctx *ctx, va_list va);
 char		*ft_get_arg_x(t_ctx *ctx, va_list va);
 char		*ft_get_arg_X(t_ctx *ctx, va_list va);
 char		*ft_get_text(char const *format, char *print);
+uint32_t	ft_plen(uint64_t n);
 uint32_t	ft_xlen(uint32_t n);
 
 #endif
