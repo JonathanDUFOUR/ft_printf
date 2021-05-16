@@ -6,15 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 09:42:30 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 11:06:37 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 
-#define TEST "%*p|\n", -15, &ft_ret
-
+#define TEST "%c %c %c coucou\n", 'A', 0, 'E'
 int	main(void)
 {
 	int	ft_ret;

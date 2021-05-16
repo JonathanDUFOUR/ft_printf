@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 08:06:54 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 11:53:31 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_ctx	t_ctx;
 
 struct s_ctx
 {
-	char		*print;
+	uint32_t	len;
 	uint8_t		flags;
 	uint32_t	field_width;
 	uint32_t	precision;
@@ -55,15 +55,16 @@ char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_precision(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_specifier(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_text(char const *format, t_ctx *ctx);
-char		*ft_get_arg_c(t_ctx *ctx, va_list va);
-char		*ft_get_arg_d_i(t_ctx *ctx, va_list va);
-char		*ft_get_arg_p(t_ctx *ctx, va_list va);
-char		*ft_get_arg_prct(t_ctx *ctx);
-char		*ft_get_arg_s(t_ctx *ctx, va_list va);
-char		*ft_get_arg_u(t_ctx *ctx, va_list va);
-char		*ft_get_arg_x(t_ctx *ctx, va_list va);
-char		*ft_get_arg_X(t_ctx *ctx, va_list va);
-char		*ft_get_text(char const *format, char *print);
+int			ft_get_arg_c(t_ctx *ctx, va_list va);
+int			ft_get_arg_d_i(t_ctx *ctx, va_list va);
+int			ft_get_arg_p(t_ctx *ctx, va_list va);
+int			ft_get_arg_prct(t_ctx *ctx);
+int			ft_get_arg_s(t_ctx *ctx, va_list va);
+int			ft_get_arg_u(t_ctx *ctx, va_list va);
+int			ft_get_arg_x(t_ctx *ctx, va_list va);
+int			ft_get_arg_X(t_ctx *ctx, va_list va);
+char		*ft_strnjoin(char *s1, uint32_t l1, char *s2, uint32_t l2);
+char		*ft_get_padding(int c, uint32_t padlen);
 uint32_t	ft_plen(uint64_t n);
 uint32_t	ft_xlen(uint32_t n);
 

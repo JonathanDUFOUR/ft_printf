@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_text.c                                      :+:      :+:    :+:   */
+/*   ft_get_padding.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 06:18:22 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/09 06:42:48 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/16 11:43:19 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/16 11:56:19 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include <stdint.h>
 
-char	*ft_get_text(char const *format, char *print)
+char	*ft_get_padding(int c, uint32_t padlen)
 {
-	char	*output;
-	char	*dent;
-	char	*next;
+	char	*padding;
+	char	*p;
 
-	next = ft_strchr(format, '%');
-	if (next)
-		dent = ft_strndup(format, next - format);
-	else
-		dent = ft_strdup(format);
-	output = ft_strjoin(print, dent);
-	free(dent);
-	return (output);
+	padding = malloc((padlen + 1) * sizeof(char));
+	if (!padding)
+		return (NULL);
+	p = padding;
+	while (padlen--)
+		*p++ = c;
+	*p = 0;
+	return (padding);
 }

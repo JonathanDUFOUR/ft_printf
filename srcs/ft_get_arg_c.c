@@ -6,48 +6,41 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:29:36 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/14 03:20:43 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 11:57:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdarg.h>
+#include <unistd.h>
 #include "ft_printf.h"
 #include "libft.h"
 
-char	*ft_padded_ctoa(int c, int field_width, int side)
+static int	ft_padded_putchar(int c, uint8_t flags, uint32_t field_width)
 {
-	char	*output;
-	char	*p;
+	char	*padding;
 
-	output = malloc((field_width + 1) * sizeof(char));
-	if (!output)
-		return (NULL);
-	p = output;
-	if (side == RIGHT)
-		*p++ = c;
-	while (--field_width)
-		*p++ = ' ';
-	if (side == LEFT)
-		*p++ = c;
-	*p = 0;
-	return (output);
+	padding = ft_get_padding(' ', field_width - 1);
+	if (!padding)
+		return (MALLOC_ERRNO);
+	if (!(flags & (1 << 0)))
+		write(1, padding, field_width - 1);
+	write(1, &c, 1);
+	if (flags & (1 << 0))
+		write(1, padding, field_width - 1);
+	return (SUCCESS);
 }
 
-char	*ft_get_arg_c(t_ctx *ctx, va_list va)
+int	ft_get_arg_c(t_ctx *ctx, va_list va)
 {
-	char	c;
-	char	*output;
-	char	*dent;
+	int		c;
 
 	c = va_arg(va, int);
-	if (ctx->field_width)
-		dent = ft_padded_ctoa(c, ctx->field_width, ctx->flags & (1 << 0));
-	else
-		dent = ft_ctoa(c);
-	if (!dent)
-		return (NULL);
-	output = ft_strjoin(ctx->print, dent);
-	free(dent);
-	return (output);
+	if (!ctx->field_width)
+		ctx->field_width = 1;
+	ctx->len += ctx->field_width;
+	if (ctx->field_width > 1)
+		return (ft_padded_putchar(c, ctx->flags, ctx->field_width));
+	ft_putchar(c);
+	return (SUCCESS);
 }
