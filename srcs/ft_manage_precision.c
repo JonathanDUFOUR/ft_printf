@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 16:21:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 05:54:05 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 16:55:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char const	*ft_manage_precision(char const *format, t_ctx *ctx, va_list va)
 		}
 		else
 		{
+			if (!ft_isdigit(*format))
+				ctx->errors |= (1 << 2);
 			ctx->precision = ft_atou(format);
 			while (ft_isdigit(*format))
 				++format;

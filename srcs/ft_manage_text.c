@@ -6,12 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 06:37:06 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 11:35:53 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 15:05:42 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "ft_printf.h"
+#include "libft.h"
 
 char const	*ft_manage_text(char const *format, t_ctx *ctx)
 {

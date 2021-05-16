@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 12:33:08 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 15:50:53 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@
 # define LEN_MODIF		"hlqL"
 # define CONVERT_SPEC	"cspdiuxX%"
 
+# define FT_ABS(n) ((n < 0) * (-n) + (n >= 0) * n)
+
 typedef struct s_ctx	t_ctx;
 
 struct s_ctx
 {
 	uint32_t	len;
 	uint8_t		flags;
+	uint8_t		errors;
 	uint32_t	field_width;
 	uint32_t	precision;
 };
@@ -63,7 +66,6 @@ int			ft_get_arg_s(t_ctx *ctx, va_list va);
 int			ft_get_arg_u(t_ctx *ctx, va_list va);
 int			ft_get_arg_x(t_ctx *ctx, va_list va);
 int			ft_get_arg_X(t_ctx *ctx, va_list va);
-char		*ft_strnjoin(char *s1, uint32_t l1, char *s2, uint32_t l2);
 char		*ft_get_padding(int c, uint32_t padlen);
 uint32_t	ft_plen(uint64_t n);
 uint32_t	ft_xlen(uint32_t n);
