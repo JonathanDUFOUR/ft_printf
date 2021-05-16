@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:39:27 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 06:38:42 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/16 06:56:37 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static char	*ft_padded_utoX(uint32_t n, t_ctx *ctx)
 	return (++output);
 }
 
-char	*ft_get_arg_x(t_ctx *ctx, va_list va)
+char	*ft_get_arg_X(t_ctx *ctx, va_list va)
 {
 	uint32_t	n;
 	uint32_t	digits;
