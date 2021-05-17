@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:29:36 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 12:57:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/17 13:15:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,11 @@
 
 static int	ft_padded_putchar(int c, uint8_t flags, uint32_t field_width)
 {
-	char	*padding;
-
-	padding = ft_get_padding(' ', field_width - 1);
-	if (!padding)
+	if (!(flags & (1 << 0)) && ft_padding(' ', field_width - 1) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	if (!(flags & (1 << 0)))
-		write(1, padding, field_width - 1);
 	write(1, &c, 1);
-	if (flags & (1 << 0))
-		write(1, padding, field_width - 1);
-	free(padding);
+	if (flags & (1 << 0) && ft_padding(' ', field_width - 1) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
 	return (SUCCESS);
 }
 

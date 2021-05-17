@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 17:58:33 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/17 13:20:29 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,46 +18,25 @@
 
 static int	ft_padded_putnbr(int n, uint32_t intlen, t_ctx *ctx)
 {
-	char		*padding;
 	uint32_t	padlen;
 
 	padlen = ctx->field_width - ctx->precision - (n < 0);
-	if (!(ctx->flags & (1 << 0)) && !(ctx->flags & (1 << 1)))
-	{
-		padding = ft_get_padding(' ', padlen);
-		if (!padding)
-			return (MALLOC_ERRNO);
-		write(1, padding, padlen);
-		free(padding);
-	}
+	if (!(ctx->flags & (1 << 0)) && !(ctx->flags & (1 << 1))
+		&& ft_padding(' ', padlen) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
 	if (n < 0)
 		write(1, "-", 1);
-	if (ctx->flags & (1 << 1))
-	{
-		padding = ft_get_padding('0', padlen);
-		if (!padding)
-			return (MALLOC_ERRNO);
-		write(1, padding, padlen);
-		free(padding);
-	}
+	if (ctx->flags & (1 << 1) && ft_padding('0', padlen) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
 	padlen = ctx->precision - (intlen - (n < 0));
-	if (padlen)
-	{
-		padding = ft_get_padding('0', padlen);
-		if (!padding)
-			return (MALLOC_ERRNO);
-		write(1, padding, padlen);
-		free(padding);
-	}
+	if (padlen && ft_padding('0', padlen) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
 	ft_putunbr((n < 0) * (-n) + (n >= 0) * n);
 	if (ctx->flags & (1 << 0))
 	{
 		padlen = ctx->field_width - ctx->precision - (n < 0);
-		padding = ft_get_padding(' ', padlen);
-		if (!padding)
+		if (ft_padding(' ', padlen) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
-		write(1, padding, padlen);
-		free(padding);
 	}
 	return (SUCCESS);
 }
@@ -66,16 +45,12 @@ int	ft_get_arg_d_i(t_ctx *ctx, va_list va)
 {
 	int			n;
 	uint32_t	intlen;
-	char		*padding;
 
 	n = va_arg(va, uint32_t);
 	if (!ctx->precision && !n)
 	{
-		padding = ft_get_padding(' ', ctx->field_width);
-		if (!padding)
+		if (ft_padding(' ', ctx->field_width) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
-		write(1, padding, ctx->field_width);
-		free(padding);
 		ctx->len += ctx->field_width;
 		return (SUCCESS);
 	}

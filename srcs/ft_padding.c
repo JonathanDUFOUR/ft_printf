@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_padding.c                                   :+:      :+:    :+:   */
+/*   ft_padding.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/16 11:43:19 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 12:35:40 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/17 13:17:27 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdint.h>
+#include <unistd.h>
+#include "ft_printf.h"
 
-char	*ft_get_padding(int c, uint32_t padlen)
+int	ft_padding(int c, uint32_t padlen)
 {
 	char	*padding;
 	char	*p;
 
 	padding = malloc((padlen + 1) * sizeof(char));
 	if (!padding)
-		return (NULL);
+		return (MALLOC_ERRNO);
 	p = padding;
 	while (padlen--)
 		*p++ = c;
 	*p = 0;
-	return (padding);
+	write(1, padding, p - padding);
+	free(padding);
+	return (SUCCESS);
 }

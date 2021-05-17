@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 17:58:41 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/17 13:12:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			ft_get_arg_s(t_ctx *ctx, va_list va);
 int			ft_get_arg_u(t_ctx *ctx, va_list va);
 int			ft_get_arg_x(t_ctx *ctx, va_list va);
 int			ft_get_arg_X(t_ctx *ctx, va_list va);
-char		*ft_get_padding(int c, uint32_t padlen);
+int			ft_padding(int c, uint32_t padlen);
 uint32_t	ft_plen(uint64_t n);
 uint32_t	ft_xlen(uint32_t n);
 

@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/16 16:14:16 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/17 13:11:35 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,13 +45,13 @@ SRCS	=	\
 			ft_get_arg_u.c			\
 			ft_get_arg_x.c			\
 			ft_get_arg_X.c			\
-			ft_get_padding.c		\
 			ft_manage_arg.c			\
 			ft_manage_flags.c		\
 			ft_manage_field_width.c	\
 			ft_manage_precision.c	\
 			ft_manage_specifier.c	\
 			ft_manage_text.c		\
+			ft_padding.c			\
 			ft_plen.c				\
 			ft_xlen.c
 

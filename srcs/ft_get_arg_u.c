@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:39:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 18:18:13 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/17 13:26:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,40 +22,20 @@ static int	ft_padded_putunbr(uint32_t n, uint32_t uintlen, t_ctx *ctx)
 	uint32_t	padlen;
 
 	padlen = ctx->field_width - ctx->precision;
-	if (!(ctx->flags & (1 << 0)) && !(ctx->flags & (1 << 1)))
-	{
-		padding = ft_get_padding(' ', padlen);
-		if (!padding)
-			return (MALLOC_ERRNO);
-		write(1, padding, padlen);
-		free(padding);
-	}
-	if (ctx->flags & (1 << 1))
-	{
-		padding = ft_get_padding('0', padlen);
-		if (!padding)
-			return (MALLOC_ERRNO);
-		write(1, padding, padlen);
-		free(padding);
-	}
+	if (!(ctx->flags & (1 << 0)) && !(ctx->flags & (1 << 1))
+		&& ft_padding(' ', padlen) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
+	if (ctx->flags & (1 << 1) && ft_padding('0', padlen) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
 	padlen = ctx->precision - uintlen;
-	if (padlen)
-	{
-		padding = ft_get_padding('0', padlen);
-		if (!padding)
-			return (MALLOC_ERRNO);
-		write(1, padding, padlen);
-		free(padding);
-	}
+	if (padlen && ft_padding('0', padlen) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
 	ft_putunbr(n);
 	if (ctx->flags & (1 << 0))
 	{
 		padlen = ctx->field_width - ctx->precision;
-		padding = ft_get_padding(' ', padlen);
-		if (!padding)
+		if (ft_padding(' ', padlen) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
-		write(1, padding, padlen);
-		free(padding);
 	}
 	return (SUCCESS);
 }
@@ -69,11 +49,8 @@ int	ft_get_arg_u(t_ctx *ctx, va_list va)
 	n = va_arg(va, uint32_t);
 	if (!ctx->precision && !n)
 	{
-		padding = ft_get_padding(' ', ctx->field_width);
-		if (!padding)
+		if (ft_padding(' ', ctx->field_width) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
-		write(1, padding, ctx->field_width);
-		free(padding);
 		ctx->len += ctx->field_width;
 		return (SUCCESS);
 	}
