@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 13:12:54 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/17 15:55:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <sys/types.h>
 # include <stdint.h>
 # include <stdarg.h>
+# include <stdbool.h>
 
 /* Remove it when finished */
 # include <stdio.h>
@@ -33,6 +34,7 @@ struct s_ctx
 	uint8_t		flags;
 	uint32_t	field_width;
 	uint32_t	precision;
+	bool		precised;
 };
 
 enum	e_padding_side
