@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 03:15:16 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 17:53:50 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/17 15:12:56 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ char const	*ft_manage_arg(char const *format, t_ctx *ctx, va_list va)
 	format = ft_manage_specifier(format, ctx, va);
 	ctx->flags = 0;
 	ctx->field_width = 0;
-	ctx->precision = 0;
+	ctx->precision = 1;
 	return (format);
 }
