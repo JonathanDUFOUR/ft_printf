@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:39:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 13:26:13 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/17 14:45:09 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 static int	ft_padded_putunbr(uint32_t n, uint32_t uintlen, t_ctx *ctx)
 {
-	char		*padding;
 	uint32_t	padlen;
 
 	padlen = ctx->field_width - ctx->precision;
@@ -44,7 +43,6 @@ int	ft_get_arg_u(t_ctx *ctx, va_list va)
 {
 	uint32_t	n;
 	uint32_t	uintlen;
-	char		*padding;
 
 	n = va_arg(va, uint32_t);
 	if (!ctx->precision && !n)
