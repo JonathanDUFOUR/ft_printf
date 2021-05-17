@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_olen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 21:18:42 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/17 20:36:53 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/17 20:39:08 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "ft_printf.h"
+#include <stdint.h>
 
-#define TEST "|%*.*b|\n", 15, 0, 0
-
-int	main(void)
+uint32_t	ft_olen(uint32_t n)
 {
-	int	ft_ret;
-	int	ret;
+	uint32_t	len;
 
-	ft_ret = ft_printf(TEST);
-	ret = printf(TEST);
-	printf("ft_ret -> %d\n", ft_ret);
-	printf("   ret -> %d\n", ret);
-	return (SUCCESS);
+	len = 1;
+	while (n > 7)
+	{
+		++len;
+		n /= 8;
+	}
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:20:34 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 11:51:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/17 20:53:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ char const	*ft_manage_specifier(char const *format, t_ctx *ctx, va_list va)
 		ret = ft_get_arg_x(ctx, va);
 	else if (*format == 'X')
 		ret = ft_get_arg_X(ctx, va);
+	else if (*format == 'o')
+		ret = ft_get_arg_o(ctx, va);
+	else if (*format == 'b')
+		ret = ft_get_arg_b(ctx, va);
 	else if (*format == '%')
 		ret = ft_get_arg_prct(ctx);
 	if (ret != SUCCESS)

@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/17 13:11:35 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/17 21:15:29 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,13 +38,15 @@ SRCS	=	\
 			${FT_SRCS}				\
 			ft_printf.c				\
 			ft_get_arg_c.c			\
-			ft_get_arg_d_i.c		\
-			ft_get_arg_p.c			\
-			ft_get_arg_prct.c		\
 			ft_get_arg_s.c			\
+			ft_get_arg_p.c			\
+			ft_get_arg_d_i.c		\
 			ft_get_arg_u.c			\
 			ft_get_arg_x.c			\
 			ft_get_arg_X.c			\
+			ft_get_arg_o.c			\
+			ft_get_arg_b.c			\
+			ft_get_arg_prct.c		\
 			ft_manage_arg.c			\
 			ft_manage_flags.c		\
 			ft_manage_field_width.c	\
@@ -53,7 +55,9 @@ SRCS	=	\
 			ft_manage_text.c		\
 			ft_padding.c			\
 			ft_plen.c				\
-			ft_xlen.c
+			ft_xlen.c				\
+			ft_olen.c				\
+			ft_blen.c
 
 OBJS	=	${SRCS:.c=.o}
 OBJS	:=	${addprefix ${OBJD}, ${OBJS}}
