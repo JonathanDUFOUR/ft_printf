@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_arg_o.c                                     :+:      :+:    :+:   */
+/*   get_arg_o_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 20:35:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 03:34:31 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 05:42:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,60 +16,60 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-static void	ft_putnbr_oct(uint32_t n)
+static void	putnbr_oct(uint32_t n)
 {
 	char	d;
 
 	if (n > 7)
-		ft_putnbr_oct(n / 8);
+		putnbr_oct(n / 8);
 	d = n % 8 + '0';
 	write(1, &d, 1);
 }
 
-static int	ft_padded_putnbr_oct(uint32_t n, uint32_t olen, t_ctx *ctx)
+static int	padded_putnbr_oct(uint32_t n, uint32_t olen, t_ctx *ctx)
 {
 	uint32_t	padlen;
 
 	padlen = ctx->fwidth - ctx->prec;
 	if (!(ctx->flags & (1 << 0)) && !(ctx->flags & (1 << 1))
-		&& ft_padding(' ', padlen) == MALLOC_ERRNO)
+		&& padding(' ', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	if (ctx->flags & (1 << 1) && ft_padding('0', padlen) == MALLOC_ERRNO)
+	if (ctx->flags & (1 << 1) && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
 	padlen = ctx->prec - olen;
-	if (padlen && ft_padding('0', padlen) == MALLOC_ERRNO)
+	if (padlen && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	ft_putnbr_oct(n);
+	putnbr_oct(n);
 	if (ctx->flags & (1 << 0))
 	{
 		padlen = ctx->fwidth - ctx->prec;
-		if (ft_padding(' ', padlen) == MALLOC_ERRNO)
+		if (padding(' ', padlen) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 	}
 	return (SUCCESS);
 }
 
-int	ft_get_arg_o(t_ctx *ctx, va_list va)
+int	get_arg_o_lower(t_ctx *ctx, va_list va)
 {
 	uint32_t	n;
-	uint32_t	olen;
+	uint32_t	len;
 
 	n = va_arg(va, uint32_t);
 	if (!ctx->prec && !n)
 	{
-		if (ft_padding(' ', ctx->fwidth) == MALLOC_ERRNO)
+		if (padding(' ', ctx->fwidth) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 		ctx->len += ctx->fwidth;
 		return (SUCCESS);
 	}
-	olen = ft_olen(n);
-	if (ctx->prec < olen)
-		ctx->prec = olen;
+	len = olen(n);
+	if (ctx->prec < len)
+		ctx->prec = len;
 	if (ctx->fwidth < ctx->prec)
 		ctx->fwidth = ctx->prec;
 	ctx->len += ctx->fwidth;
-	if (ctx->fwidth > olen)
-		return (ft_padded_putnbr_oct(n, olen, ctx));
-	ft_putnbr_oct(n);
+	if (ctx->fwidth > len)
+		return (padded_putnbr_oct(n, len, ctx));
+	putnbr_oct(n);
 	return (SUCCESS);
 }

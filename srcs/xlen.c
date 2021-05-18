@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_arg_prct.c                                  :+:      :+:    :+:   */
+/*   xlen.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 06:58:39 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 14:59:08 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/16 06:29:14 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 05:19:45 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "libft.h"
-#include "ft_printf.h"
+#include <stdint.h>
 
-int	ft_get_arg_prct(t_ctx *ctx)
+uint32_t	xlen(uint32_t n)
 {
-	++ctx->len;
-	write(1, "%", 1);
-	return (SUCCESS);
+	uint32_t	len;
+
+	len = 1;
+	while (n > 15)
+	{
+		++len;
+		n /= 16;
+	}
+	return (len);
 }

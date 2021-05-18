@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_manage_field_width.c                            :+:      :+:    :+:   */
+/*   manage_arg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/12 23:43:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 03:33:38 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/09 03:15:16 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 05:16:55 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdarg.h>
 #include "libft.h"
+#include "ft_printf.h"
 
-char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va)
+char const	*manage_arg(char const *format, t_ctx *ctx, va_list va)
 {
-	int	tmp;
-
-	if (*format == '*')
-	{
-		tmp = va_arg(va, int);
-		if (tmp >> 31)
-		{
-			ctx->flags |= 1 << 0;
-			ctx->flags &= ~(1 << 1);
-			ctx->fwidth = -tmp;
-		}
-		else
-			ctx->fwidth = tmp;
-		++format;
-	}
-	else
-	{
-		ctx->fwidth = ft_atou(format);
-		while (ft_isdigit(*format))
-			++format;
-	}
+	format = manage_flags(format, ctx);
+	format = manage_field_width(format, ctx, va);
+	format = manage_precision(format, ctx, va);
+	format = manage_specifier(format, ctx, va);
+	ctx->flags = 0;
+	ctx->fwidth = 0;
+	ctx->prec = 1;
+	ctx->precised = false;
 	return (format);
 }

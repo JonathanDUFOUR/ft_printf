@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   plen.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 05:30:24 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/16 07:30:33 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 05:19:43 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "ft_printf.h"
+#include <stdint.h>
 
-#define TEST "|%#*.*X|\n", -30, 20, 2147483647
-
-int	main(void)
+uint32_t	plen(uint64_t n)
 {
-	int	ret;
-	int	ret;
+	uint32_t	len;
 
-	ret = ft_printf(TEST);
-	ret = ft_printf(TEST);
-	fflush(stdout);
-	ft_printf("ret -> %d\n", ret);
-	fflush(stdout);
-	ft_printf("   ret -> %d\n", ret);
-	return (SUCCESS);
+	len = 1;
+	while (n > 15)
+	{
+		++len;
+		n /= 16;
+	}
+	return (len);
 }

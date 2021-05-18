@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_plen.c                                          :+:      :+:    :+:   */
+/*   manage_text.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/16 07:30:33 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 07:32:11 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/09 06:37:06 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 05:35:08 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "ft_printf.h"
+#include "libft.h"
 
-uint32_t	ft_plen(uint64_t n)
+char const	*manage_text(char const *format, t_ctx *ctx)
 {
-	uint32_t	len;
+	char	*next;
 
-	len = 1;
-	while (n > 15)
-	{
-		++len;
-		n /= 16;
-	}
-	return (len);
+	next = ft_strchr(format, '%');
+	if (next)
+		ctx->fwidth = next - format;
+	else
+		ctx->fwidth = ft_strlen(format);
+	write(1, format, ctx->fwidth);
+	ctx->len += ctx->fwidth;
+	while (*format && *format != '%')
+		++format;
+	return (format);
 }

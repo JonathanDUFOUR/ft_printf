@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_padding.c                                       :+:      :+:    :+:   */
+/*   blen.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 13:17:27 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/17 21:10:24 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 05:20:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "ft_printf.h"
+#include <stdint.h>
 
-int	ft_padding(int c, uint32_t padlen)
+uint32_t	blen(uint32_t n)
 {
-	char	*padding;
-	char	*p;
+	uint32_t	len;
 
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERRNO);
-	p = padding;
-	while (padlen--)
-		*p++ = c;
-	*p = 0;
-	write(1, padding, p - padding);
-	free(padding);
-	return (SUCCESS);
+	len = 1;
+	while (n > 1)
+	{
+		++len;
+		n /= 2;
+	}
+	return (len);
 }

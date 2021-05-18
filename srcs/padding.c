@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_olen.c                                          :+:      :+:    :+:   */
+/*   padding.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 20:36:53 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 20:39:08 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 05:30:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "ft_printf.h"
 
-uint32_t	ft_olen(uint32_t n)
+int	padding(int c, uint32_t padlen)
 {
-	uint32_t	len;
+	char	*padding;
+	char	*p;
 
-	len = 1;
-	while (n > 7)
-	{
-		++len;
-		n /= 8;
-	}
-	return (len);
+	padding = malloc((padlen + 1) * sizeof(char));
+	if (!padding)
+		return (MALLOC_ERRNO);
+	p = padding;
+	while (padlen--)
+		*p++ = c;
+	*p = 0;
+	write(1, padding, p - padding);
+	free(padding);
+	return (SUCCESS);
 }

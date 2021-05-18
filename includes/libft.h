@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:03:53 by jonathan          #+#    #+#             */
-/*   Updated: 2021/05/17 14:42:46 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 05:37:41 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		*ft_memcpy(void *dest, void const *src, size_t n);
 void		ft_memdel(void **ap);
 void		*ft_memmove(void *dest, void const *src, size_t n);
 void		*ft_memset(void *s, int c, size_t n);
-void		ft_padded_putnbr_base(u_int32_t n, char const *b, u_int8_t l);
+void		ft_padded_ft_putnbr_base(u_int32_t n, char const *b, u_int8_t l);
 int			ft_power(int n, uint32_t pow);
 void		ft_putbyte(uint8_t byte);
 void		ft_putbytes(void *addr, size_t size);

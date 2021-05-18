@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_manage_text.c                                   :+:      :+:    :+:   */
+/*   manage_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 06:37:06 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 03:33:39 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/13 16:21:56 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 05:16:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
 #include "ft_printf.h"
 #include "libft.h"
 
-char const	*ft_manage_text(char const *format, t_ctx *ctx)
+char const	*manage_precision(char const *format, t_ctx *ctx, va_list va)
 {
-	char	*next;
+	int	tmp;
 
-	next = ft_strchr(format, '%');
-	if (next)
+	if (*format == '.')
 	{
-		ctx->fwidth = next - format;
+		ctx->precised = true;
+		ctx->flags &= ~(1 << 1);
+		if (*++format == '*')
+		{
+			tmp = va_arg(va, int);
+			if (tmp >> 31)
+				ctx->prec = 1;
+			else
+				ctx->prec = (uint32_t)tmp;
+			++format;
+		}
+		else
+		{
+			ctx->prec = ft_atou(format);
+			while (ft_isdigit(*format))
+				++format;
+		}
 	}
-	else
-	{
-		ctx->fwidth = ft_strlen(format);
-	}
-	write(1, format, ctx->fwidth);
-	ctx->len += ctx->fwidth;
-	while (*format && *format != '%')
-		++format;
 	return (format);
 }

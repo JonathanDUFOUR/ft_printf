@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 04:35:48 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 05:30:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ enum	e_ret
 };
 
 int			ft_printf(char const *format, ...);
-char const	*ft_manage_arg(char const *format, t_ctx *ctx, va_list va);
-char const	*ft_manage_flags(char const *format, t_ctx *ctx);
-char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va);
-char const	*ft_manage_precision(char const *format, t_ctx *ctx, va_list va);
-char const	*ft_manage_specifier(char const *format, t_ctx *ctx, va_list va);
-char const	*ft_manage_text(char const *format, t_ctx *ctx);
-int			ft_padding(int c, uint32_t padlen);
-uint32_t	ft_plen(uint64_t n);
-uint32_t	ft_xlen(uint32_t n);
-uint32_t	ft_olen(uint32_t n);
-uint32_t	ft_blen(uint32_t n);
+char const	*manage_arg(char const *format, t_ctx *ctx, va_list va);
+char const	*manage_flags(char const *format, t_ctx *ctx);
+char const	*manage_field_width(char const *format, t_ctx *ctx, va_list va);
+char const	*manage_precision(char const *format, t_ctx *ctx, va_list va);
+char const	*manage_specifier(char const *format, t_ctx *ctx, va_list va);
+char const	*manage_text(char const *format, t_ctx *ctx);
+int			padding(int c, uint32_t padlen);
+uint32_t	plen(uint64_t n);
+uint32_t	xlen(uint32_t n);
+uint32_t	olen(uint32_t n);
+uint32_t	blen(uint32_t n);
 
 #endif

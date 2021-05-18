@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:58:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 04:35:30 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 05:30:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	ft_init_ctx(t_ctx *ctx)
+static void	init_ctx(t_ctx *ctx)
 {
 	ctx->len = 0;
 	ctx->flags = 0;
@@ -29,14 +29,14 @@ int	ft_printf(char const *format, ...)
 	t_ctx		ctx;
 	va_list		va;
 
-	ft_init_ctx(&ctx);
+	init_ctx(&ctx);
 	va_start(va, format);
 	while (*format)
 	{
 		if (*format == '%')
-			format = ft_manage_arg(format + 1, &ctx, va);
+			format = manage_arg(format + 1, &ctx, va);
 		else
-			format = ft_manage_text(format, &ctx);
+			format = manage_text(format, &ctx);
 		if (!format)
 		{
 			va_end(va);

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 04:09:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 04:36:41 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 05:28:32 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,29 @@
 
 # include "t_cvrt.h"
 
-int	ft_get_arg_c(t_ctx *ctx, va_list va);
-int	ft_get_arg_s(t_ctx *ctx, va_list va);
-int	ft_get_arg_p(t_ctx *ctx, va_list va);
-int	ft_get_arg_d_i(t_ctx *ctx, va_list va);
-int	ft_get_arg_u(t_ctx *ctx, va_list va);
-int	ft_get_arg_x(t_ctx *ctx, va_list va);
-int	ft_get_arg_X(t_ctx *ctx, va_list va);
-int	ft_get_arg_o(t_ctx *ctx, va_list va);
-int	ft_get_arg_b(t_ctx *ctx, va_list va);
-int	ft_get_arg_prct(t_ctx *ctx, va_list va __attribute__((unused)));
+int	get_arg_c_lower(t_ctx *ctx, va_list va);
+int	get_arg_s_lower(t_ctx *ctx, va_list va);
+int	get_arg_p_lower(t_ctx *ctx, va_list va);
+int	get_arg_d_lower(t_ctx *ctx, va_list va);
+int	get_arg_u_lower(t_ctx *ctx, va_list va);
+int	get_arg_x_lower(t_ctx *ctx, va_list va);
+int	get_arg_x_upper(t_ctx *ctx, va_list va);
+int	get_arg_o_lower(t_ctx *ctx, va_list va);
+int	get_arg_b_lower(t_ctx *ctx, va_list va);
+int	get_arg_prct(t_ctx *ctx, va_list va __attribute__((unused)));
 
 static const t_cvrt	g_cvrt[] = {
-	{'c', true, ft_get_arg_c},
-	{'s', true, ft_get_arg_s},
-	{'p', true, ft_get_arg_p},
-	{'d', true, ft_get_arg_d_i},
-	{'i', true, ft_get_arg_d_i},
-	{'u', true, ft_get_arg_u},
-	{'x', true, ft_get_arg_x},
-	{'X', true, ft_get_arg_X},
-	{'%', false, ft_get_arg_prct},
+	{'c', true, get_arg_c_lower},
+	{'s', true, get_arg_s_lower},
+	{'p', true, get_arg_p_lower},
+	{'d', true, get_arg_d_lower},
+	{'i', true, get_arg_d_lower},
+	{'u', true, get_arg_u_lower},
+	{'x', true, get_arg_x_lower},
+	{'X', true, get_arg_x_upper},
+	{'o', true, get_arg_o_lower},
+	{'b', true, get_arg_b_lower},
+	{'%', false, get_arg_prct},
 	{0}
 };
 

@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/17 21:15:29 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/18 05:34:03 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,27 +37,27 @@ FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 SRCS	=	\
 			${FT_SRCS}				\
 			ft_printf.c				\
-			ft_get_arg_c.c			\
-			ft_get_arg_s.c			\
-			ft_get_arg_p.c			\
-			ft_get_arg_d_i.c		\
-			ft_get_arg_u.c			\
-			ft_get_arg_x.c			\
-			ft_get_arg_X.c			\
-			ft_get_arg_o.c			\
-			ft_get_arg_b.c			\
-			ft_get_arg_prct.c		\
-			ft_manage_arg.c			\
-			ft_manage_flags.c		\
-			ft_manage_field_width.c	\
-			ft_manage_precision.c	\
-			ft_manage_specifier.c	\
-			ft_manage_text.c		\
-			ft_padding.c			\
-			ft_plen.c				\
-			ft_xlen.c				\
-			ft_olen.c				\
-			ft_blen.c
+			get_arg_c_lower.c		\
+			get_arg_s_lower.c		\
+			get_arg_p_lower.c		\
+			get_arg_d_lower.c		\
+			get_arg_u_lower.c		\
+			get_arg_x_lower.c		\
+			get_arg_x_upper.c		\
+			get_arg_o_lower.c		\
+			get_arg_b_lower.c		\
+			get_arg_prct.c			\
+			manage_arg.c			\
+			manage_flags.c			\
+			manage_field_width.c	\
+			manage_precision.c		\
+			manage_specifier.c		\
+			manage_text.c			\
+			padding.c				\
+			plen.c					\
+			xlen.c					\
+			olen.c					\
+			blen.c
 
 OBJS	=	${SRCS:.c=.o}
 OBJS	:=	${addprefix ${OBJD}, ${OBJS}}
