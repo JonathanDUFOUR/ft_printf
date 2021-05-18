@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 16:03:57 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 02:24:09 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,13 @@ static int	ft_putnull(t_ctx *ctx)
 
 static int	ft_padded_putnstr(char *s, t_ctx *ctx)
 {
-	if (!(ctx->flags & (1 << 0)))
-	{
-		if (ft_padding(' ', ctx->field_width - ctx->precision) == MALLOC_ERRNO)
-			return (MALLOC_ERRNO);
-	}
+	if (!(ctx->flags & (1 << 0))
+		&& ft_padding(' ', ctx->field_width - ctx->precision) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
 	write(1, s, ctx->precision);
-	if (ctx->flags & (1 << 0))
-	{
-		if (ft_padding(' ', ctx->field_width - ctx->precision) == MALLOC_ERRNO)
-			return (MALLOC_ERRNO);
-	}
+	if (ctx->flags & (1 << 0)
+		&& ft_padding(' ', ctx->field_width - ctx->precision) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
 	return (SUCCESS);
 }
 
