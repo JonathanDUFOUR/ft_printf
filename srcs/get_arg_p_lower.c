@@ -6,14 +6,12 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:29 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 05:43:28 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 06:30:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include "libft.h"
 #include "ft_printf.h"
 
 static int	putnil(t_ctx *ctx)
@@ -52,7 +50,7 @@ static void	putnbr_hexa(uint64_t n)
 	write(1, &d, 1);
 }
 
-static int	padded_putnbr_hexa(uint64_t n, uint32_t plen, t_ctx *ctx)
+static int	padded_putnbr_hexa(uint64_t n, uint32_t len, t_ctx *ctx)
 {
 	uint32_t	padlen;
 
@@ -63,7 +61,7 @@ static int	padded_putnbr_hexa(uint64_t n, uint32_t plen, t_ctx *ctx)
 	write(1, "0x", 2);
 	if (ctx->flags & (1 << 1) && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	padlen = ctx->prec - plen;
+	padlen = ctx->prec - len;
 	if (padlen && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
 	putnbr_hexa(n);

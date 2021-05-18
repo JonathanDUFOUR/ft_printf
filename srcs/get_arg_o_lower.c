@@ -6,27 +6,16 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 20:35:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 05:42:13 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 06:30:36 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
 #include "libft.h"
 #include "ft_printf.h"
 
-static void	putnbr_oct(uint32_t n)
-{
-	char	d;
-
-	if (n > 7)
-		putnbr_oct(n / 8);
-	d = n % 8 + '0';
-	write(1, &d, 1);
-}
-
-static int	padded_putnbr_oct(uint32_t n, uint32_t olen, t_ctx *ctx)
+static int	padded_putnbr_oct(uint32_t n, uint32_t len, t_ctx *ctx)
 {
 	uint32_t	padlen;
 
@@ -36,10 +25,10 @@ static int	padded_putnbr_oct(uint32_t n, uint32_t olen, t_ctx *ctx)
 		return (MALLOC_ERRNO);
 	if (ctx->flags & (1 << 1) && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	padlen = ctx->prec - olen;
+	padlen = ctx->prec - len;
 	if (padlen && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	putnbr_oct(n);
+	ft_putnbr_oct(n);
 	if (ctx->flags & (1 << 0))
 	{
 		padlen = ctx->fwidth - ctx->prec;
@@ -70,6 +59,6 @@ int	get_arg_o_lower(t_ctx *ctx, va_list va)
 	ctx->len += ctx->fwidth;
 	if (ctx->fwidth > len)
 		return (padded_putnbr_oct(n, len, ctx));
-	putnbr_oct(n);
+	ft_putnbr_oct(n);
 	return (SUCCESS);
 }

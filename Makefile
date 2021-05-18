@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/18 05:34:03 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/18 06:11:12 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,19 @@ MAKEDIR	=	mkdir -p
 RM		=	rm -rf
 
 FT_SRCS	=	\
-			ft_atou.c		\
-			ft_intlen.c		\
-			ft_isdigit.c	\
-			ft_isspace.c	\
-			ft_putchar.c	\
-			ft_putnbr.c		\
-			ft_putunbr.c	\
-			ft_strchr.c		\
-			ft_strlen.c		\
-			ft_uintlen.c	\
+			ft_atou.c			\
+			ft_intlen.c			\
+			ft_isdigit.c		\
+			ft_isspace.c		\
+			ft_putchar.c		\
+			ft_putnbr.c			\
+			ft_putnbr_bin.c		\
+			ft_putnbr_hexa.c	\
+			ft_putnbr_oct.c		\
+			ft_putunbr.c		\
+			ft_strchr.c			\
+			ft_strlen.c			\
+			ft_uintlen.c		\
 
 FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 

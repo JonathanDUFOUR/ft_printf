@@ -10,28 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
 #include "libft.h"
 #include "ft_printf.h"
 
-static void	ft_putnbr_hexa(uint32_t n)
-{
-	uint32_t	mod;
-	char		d;
-
-	if (n > 15)
-		ft_putnbr_hexa(n / 16);
-	mod = n % 16;
-	if (mod < 10)
-		d = mod + '0';
-	else
-		d = mod - 10 + 'A';
-	write(1, &d, 1);
-}
-
-static int	padded_ft_putnbr_hexa(uint32_t n, uint32_t xlen, t_ctx *ctx)
+static int	padded_putnbr_hexa(uint32_t n, uint32_t len, t_ctx *ctx)
 {
 	uint32_t	padlen;
 
@@ -43,10 +27,10 @@ static int	padded_ft_putnbr_hexa(uint32_t n, uint32_t xlen, t_ctx *ctx)
 		write(1, "0X", 2);
 	if (ctx->flags & (1 << 1) && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	padlen = ctx->prec - xlen;
+	padlen = ctx->prec - len;
 	if (padlen && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	ft_putnbr_hexa(n);
+	ft_putnbr_hexa(n, 'A');
 	if (ctx->flags & (1 << 0))
 	{
 		padlen = ctx->fwidth - ctx->prec - !!(ctx->flags & (1 << 4)) * 2;
@@ -78,7 +62,7 @@ int	get_arg_x_upper(t_ctx *ctx, va_list va)
 		ctx->fwidth = ctx->prec + 2 * !!(ctx->flags & (1 << 4));
 	ctx->len += ctx->fwidth;
 	if (ctx->fwidth > len)
-		return (padded_ft_putnbr_hexa(n, len, ctx));
-	ft_putnbr_hexa(n);
+		return (padded_putnbr_hexa(n, len, ctx));
+	ft_putnbr_hexa(n, 'A');
 	return (SUCCESS);
 }

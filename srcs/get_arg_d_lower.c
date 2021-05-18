@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_arg_d_lower.c                                   :+:      :+:    :+:   */
+/*   get_arg_d_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 04:38:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 03:34:35 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/18 06:19:49 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 06:30:42 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
 #include "libft.h"
 #include "ft_printf.h"
 
-static int	padded_putnbr(int n, uint32_t ft_intlen, t_ctx *ctx)
+static int	padded_putnbr(int n, uint32_t len, t_ctx *ctx)
 {
 	uint32_t	padlen;
 
@@ -28,7 +27,7 @@ static int	padded_putnbr(int n, uint32_t ft_intlen, t_ctx *ctx)
 		write(1, "-", 1);
 	if (ctx->flags & (1 << 1) && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	padlen = ctx->prec - (ft_intlen - (n < 0));
+	padlen = ctx->prec - (len - (n < 0));
 	if (padlen && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
 	ft_putunbr((n < 0) * (-n) + (n >= 0) * n);
