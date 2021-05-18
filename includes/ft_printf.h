@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 03:34:27 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 04:35:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,6 @@ char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_precision(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_specifier(char const *format, t_ctx *ctx, va_list va);
 char const	*ft_manage_text(char const *format, t_ctx *ctx);
-int			ft_get_arg_c(t_ctx *ctx, va_list va);
-int			ft_get_arg_s(t_ctx *ctx, va_list va);
-int			ft_get_arg_p(t_ctx *ctx, va_list va);
-int			ft_get_arg_d_i(t_ctx *ctx, va_list va);
-int			ft_get_arg_u(t_ctx *ctx, va_list va);
-int			ft_get_arg_x(t_ctx *ctx, va_list va);
-int			ft_get_arg_X(t_ctx *ctx, va_list va);
-int			ft_get_arg_o(t_ctx *ctx, va_list va);
-int			ft_get_arg_b(t_ctx *ctx, va_list va);
-int			ft_get_arg_prct(t_ctx *ctx);
 int			ft_padding(int c, uint32_t padlen);
 uint32_t	ft_plen(uint64_t n);
 uint32_t	ft_xlen(uint32_t n);

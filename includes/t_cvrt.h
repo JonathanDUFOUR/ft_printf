@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_manage_specifier.c                              :+:      :+:    :+:   */
+/*   t_cvrt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 04:20:34 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 04:34:15 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/18 04:11:31 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 04:16:06 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "dispatch_lookup.h"
+#ifndef T_CVRT_H
+# define T_CVRT_H
 
-char const	*ft_manage_specifier(char const *format, t_ctx *ctx, va_list va)
+# include <stdarg.h>
+# include <stdbool.h>
+# include "ft_printf.h"
+
+typedef struct s_cvrt	t_cvrt;
+
+struct s_cvrt
 {
-	t_cvrt const	*curr;
+	char	c;
+	bool	need_arg;
+	int		(*fct)(t_ctx *ctx, va_list va);
+};
 
-	curr = g_cvrt;
-	while (curr->c && curr->c != *format)
-		++curr;
-	if (!curr->fct || curr->fct(ctx, va) != SUCCESS)
-		return (NULL);
-	return (format + 1);
-}
+#endif
