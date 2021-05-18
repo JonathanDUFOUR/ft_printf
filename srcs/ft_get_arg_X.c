@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:39:27 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 14:47:05 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 03:34:45 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,21 @@ static int	ft_padded_putnbr_hexa(uint32_t n, uint32_t xlen, t_ctx *ctx)
 {
 	uint32_t	padlen;
 
-	padlen = ctx->field_width - ctx->precision;
+	padlen = ctx->fwidth - ctx->prec - !!(ctx->flags & (1 << 4)) * 2;
 	if (!(ctx->flags & (1 << 0)) && !(ctx->flags & (1 << 1))
 		&& ft_padding(' ', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
+	if (ctx->flags & (1 << 4))
+		write(1, "0X", 2);
 	if (ctx->flags & (1 << 1) && ft_padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	padlen = ctx->precision - xlen;
+	padlen = ctx->prec - xlen;
 	if (padlen && ft_padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
 	ft_putnbr_hexa(n);
 	if (ctx->flags & (1 << 0))
 	{
-		padlen = ctx->field_width - ctx->precision;
+		padlen = ctx->fwidth - ctx->prec - !!(ctx->flags & (1 << 4)) * 2;
 		if (ft_padding(' ', padlen) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 	}
@@ -60,20 +62,22 @@ int	ft_get_arg_X(t_ctx *ctx, va_list va)
 	uint32_t	xlen;
 
 	n = va_arg(va, uint32_t);
-	if (!ctx->precision && !n)
+	if (!ctx->prec && !n)
 	{
-		if (ft_padding(' ', ctx->field_width) == MALLOC_ERRNO)
+		if (ft_padding(' ', ctx->fwidth) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
-		ctx->len += ctx->field_width;
+		ctx->len += ctx->fwidth;
 		return (SUCCESS);
 	}
+	if (!n)
+		ctx->flags &= ~(1 << 4);
 	xlen = ft_xlen(n);
-	if (ctx->precision < xlen)
-		ctx->precision = xlen;
-	if (ctx->field_width < ctx->precision)
-		ctx->field_width = ctx->precision;
-	ctx->len += ctx->field_width;
-	if (ctx->field_width > xlen)
+	if (ctx->prec < xlen)
+		ctx->prec = xlen;
+	if (ctx->fwidth < (ctx->prec + 2 * !!(ctx->flags & (1 << 4))))
+		ctx->fwidth = ctx->prec + 2 * !!(ctx->flags & (1 << 4));
+	ctx->len += ctx->fwidth;
+	if (ctx->fwidth > xlen)
 		return (ft_padded_putnbr_hexa(n, xlen, ctx));
 	ft_putnbr_hexa(n);
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:29 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 15:31:22 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 03:34:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@
 
 static int	ft_putnil(t_ctx *ctx)
 {
-	if (ctx->field_width > 5)
+	if (ctx->fwidth > 5)
 	{
 		if (!(ctx->flags & (1 << 0))
-			&& ft_padding(' ', ctx->field_width - 5) == MALLOC_ERRNO)
+			&& ft_padding(' ', ctx->fwidth - 5) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 		write(1, "(nil)", 5);
 		if (ctx->flags & (1 << 0)
-			&& ft_padding(' ', ctx->field_width - 5) == MALLOC_ERRNO)
+			&& ft_padding(' ', ctx->fwidth - 5) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 	}
 	else
 	{
-		ctx->field_width = 5;
+		ctx->fwidth = 5;
 		write(1, "(nil)", 5);
 	}
-	ctx->len += ctx->field_width;
+	ctx->len += ctx->fwidth;
 	return (SUCCESS);
 }
 
@@ -56,20 +56,20 @@ static int	ft_padded_putnbr_hexa(uint64_t n, uint32_t plen, t_ctx *ctx)
 {
 	uint32_t	padlen;
 
-	padlen = ctx->field_width - ctx->precision - 2;
+	padlen = ctx->fwidth - ctx->prec - 2;
 	if (!(ctx->flags & (1 << 0)) && !(ctx->flags & (1 << 1))
 		&& ft_padding(' ', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
 	write(1, "0x", 2);
 	if (ctx->flags & (1 << 1) && ft_padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	padlen = ctx->precision - plen;
+	padlen = ctx->prec - plen;
 	if (padlen && ft_padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
 	ft_putnbr_hexa(n);
 	if (ctx->flags & (1 << 0))
 	{
-		padlen = ctx->field_width - ctx->precision - 2;
+		padlen = ctx->fwidth - ctx->prec - 2;
 		if (ft_padding(' ', padlen) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 	}
@@ -85,12 +85,12 @@ int	ft_get_arg_p(t_ctx *ctx, va_list va)
 	if (!n)
 		return (ft_putnil(ctx));
 	plen = ft_plen(n);
-	if (ctx->precision < plen)
-		ctx->precision = plen;
-	if (ctx->field_width < (ctx->precision + 2))
-		ctx->field_width = ctx->precision + 2;
-	ctx->len += ctx->field_width;
-	if (ctx->field_width > (plen + 2))
+	if (ctx->prec < plen)
+		ctx->prec = plen;
+	if (ctx->fwidth < (ctx->prec + 2))
+		ctx->fwidth = ctx->prec + 2;
+	ctx->len += ctx->fwidth;
+	if (ctx->fwidth > (plen + 2))
 		return (ft_padded_putnbr_hexa(n, plen, ctx));
 	write(1, "0x", 2);
 	ft_putnbr_hexa(n);

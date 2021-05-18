@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 23:43:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 05:56:35 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 03:33:38 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ char const	*ft_manage_field_width(char const *format, t_ctx *ctx, va_list va)
 		{
 			ctx->flags |= 1 << 0;
 			ctx->flags &= ~(1 << 1);
-			ctx->field_width = -tmp;
+			ctx->fwidth = -tmp;
 		}
 		else
-			ctx->field_width = tmp;
+			ctx->fwidth = tmp;
 		++format;
 	}
 	else
 	{
-		ctx->field_width = ft_atou(format);
+		ctx->fwidth = ft_atou(format);
 		while (ft_isdigit(*format))
 			++format;
 	}

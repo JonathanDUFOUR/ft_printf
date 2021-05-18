@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:29:36 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 13:15:48 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 03:33:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	ft_get_arg_c(t_ctx *ctx, va_list va)
 	int		c;
 
 	c = va_arg(va, int);
-	if (!ctx->field_width)
-		ctx->field_width = 1;
-	ctx->len += ctx->field_width;
-	if (ctx->field_width > 1)
-		return (ft_padded_putchar(c, ctx->flags, ctx->field_width));
+	if (!ctx->fwidth)
+		ctx->fwidth = 1;
+	ctx->len += ctx->fwidth;
+	if (ctx->fwidth > 1)
+		return (ft_padded_putchar(c, ctx->flags, ctx->fwidth));
 	ft_putchar(c);
 	return (SUCCESS);
 }

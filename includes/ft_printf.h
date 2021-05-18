@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 02:34:17 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 03:34:27 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /* Remove it when finished */
 # include <stdio.h>
 
-# define FLAG_CHARS		"-0"
+# define FLAG_CHARS		"-0+ #"
 # define LEN_MODIF		"hlqL"
 # define CONVERT_SPEC	"cspdiuxX%"
 
@@ -31,8 +31,8 @@ struct s_ctx
 {
 	uint32_t	len;
 	uint8_t		flags;
-	uint32_t	field_width;
-	uint32_t	precision;
+	uint32_t	fwidth;
+	uint32_t	prec;
 	bool		precised;
 };
 

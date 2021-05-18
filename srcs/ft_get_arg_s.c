@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 02:24:09 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 03:34:36 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,33 @@
 
 static int	ft_putnull(t_ctx *ctx)
 {
-	if (ctx->field_width > 6)
+	if (ctx->fwidth > 6)
 	{
 		if (!(ctx->flags & (1 << 0))
-			&& ft_padding(' ', ctx->field_width - 6) == MALLOC_ERRNO)
+			&& ft_padding(' ', ctx->fwidth - 6) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 		write(1, "(null)", 6);
 		if (ctx->flags & (1 << 0)
-			&& ft_padding(' ', ctx->field_width - 6) == MALLOC_ERRNO)
+			&& ft_padding(' ', ctx->fwidth - 6) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 	}
 	else
 	{
-		ctx->field_width = 6;
+		ctx->fwidth = 6;
 		write(1, "(null)", 6);
 	}
-	ctx->len += ctx->field_width;
+	ctx->len += ctx->fwidth;
 	return (SUCCESS);
 }
 
 static int	ft_padded_putnstr(char *s, t_ctx *ctx)
 {
 	if (!(ctx->flags & (1 << 0))
-		&& ft_padding(' ', ctx->field_width - ctx->precision) == MALLOC_ERRNO)
+		&& ft_padding(' ', ctx->fwidth - ctx->prec) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	write(1, s, ctx->precision);
+	write(1, s, ctx->prec);
 	if (ctx->flags & (1 << 0)
-		&& ft_padding(' ', ctx->field_width - ctx->precision) == MALLOC_ERRNO)
+		&& ft_padding(' ', ctx->fwidth - ctx->prec) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
 	return (SUCCESS);
 }
@@ -58,13 +58,13 @@ int	ft_get_arg_s(t_ctx *ctx, va_list va)
 	if (!s)
 		return (ft_putnull(ctx));
 	len = (uint32_t)ft_strlen(s);
-	if (!ctx->precised || ctx->precision > len)
-		ctx->precision = len;
-	if (ctx->field_width < ctx->precision)
-		ctx->field_width = ctx->precision;
-	ctx->len += ctx->field_width;
-	if (ctx->field_width > ctx->precision)
+	if (!ctx->precised || ctx->prec > len)
+		ctx->prec = len;
+	if (ctx->fwidth < ctx->prec)
+		ctx->fwidth = ctx->prec;
+	ctx->len += ctx->fwidth;
+	if (ctx->fwidth > ctx->prec)
 		return (ft_padded_putnstr(s, ctx));
-	write(1, s, ctx->precision);
+	write(1, s, ctx->prec);
 	return (SUCCESS);
 }

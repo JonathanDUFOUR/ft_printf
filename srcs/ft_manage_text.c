@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 06:37:06 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/16 15:05:42 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 03:33:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ char const	*ft_manage_text(char const *format, t_ctx *ctx)
 	next = ft_strchr(format, '%');
 	if (next)
 	{
-		ctx->field_width = next - format;
+		ctx->fwidth = next - format;
 	}
 	else
 	{
-		ctx->field_width = ft_strlen(format);
+		ctx->fwidth = ft_strlen(format);
 	}
-	write(1, format, ctx->field_width);
-	ctx->len += ctx->field_width;
+	write(1, format, ctx->fwidth);
+	ctx->len += ctx->fwidth;
 	while (*format && *format != '%')
 		++format;
 	return (format);

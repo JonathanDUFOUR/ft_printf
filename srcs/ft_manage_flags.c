@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 17:38:17 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 02:36:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 02:45:10 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char const	*ft_manage_flags(char const *format, t_ctx *ctx)
 			ctx->flags |= 1 << 2;
 			ctx->flags &= ~(1 << 3);
 		}
-		else if (*format == ' ' && !(ctx->flags) & (1 << 2))
+		else if (*format == ' ' && !(ctx->flags & (1 << 2)))
 			ctx->flags |= 1 << 3;
 		else if (*format == '#')
 			ctx->flags |= 1 << 4;
