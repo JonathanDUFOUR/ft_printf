@@ -33,7 +33,7 @@ static int	padded_putnbr_hexa(uint32_t n, uint32_t len, t_ctx *ctx)
 	ft_putnbr_hexa(n, 'a');
 	if (ctx->flags & (1 << 0))
 	{
-		padlen = ctx->fwidth - ctx->prec;
+		padlen = ctx->fwidth - ctx->prec - !!(ctx->flags & (1 << 4)) * 2;
 		if (padding(' ', padlen) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 	}
