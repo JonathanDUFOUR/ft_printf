@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/17 21:11:38 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/18 02:34:17 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <stdio.h>
 
 # define FLAG_CHARS		"-0"
-# define PRECI_CHAR		"."
 # define LEN_MODIF		"hlqL"
 # define CONVERT_SPEC	"cspdiuxX%"
 
