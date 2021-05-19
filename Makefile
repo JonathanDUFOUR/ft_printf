@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/18 06:11:12 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/19 20:34:18 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ OBJS	:=	${addprefix ${OBJD}, ${OBJS}}
 
 DEPS		=	${OBJS:.o=.d}
 
-CFLAGS		=	-Wextra -Wall -MMD -I ${INCLUDE}
+CFLAGS		=	-Wextra -Wall -Werror -MMD -I ${INCLUDE}
 LDFLAGS		=
 
 ifeq (${DEBUG}, true)
