@@ -15,20 +15,17 @@
 
 char const	*manage_precision(char const *format, t_ctx *ctx, va_list va)
 {
-	int	tmp;
-
 	if (*format == '.')
 	{
 		if (*++format == '*')
 		{
-			tmp = va_arg(va, int);
-			if (tmp >> 31)
+			ctx->prec = va_arg(va, uint32_t);
+			if (ctx->prec >> 31)
 				ctx->prec = 1;
 			else
 			{
 				ctx->precised = true;
 				ctx->flags &= ~(1 << 1);
-				ctx->prec = (uint32_t)tmp;
 			}
 			++format;
 		}

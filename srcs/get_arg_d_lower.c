@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 06:19:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/19 01:35:40 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/20 21:23:27 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	padded_putnbr(int n, uint32_t len, t_ctx *ctx)
 		write(1, " ", 1);
 	if (ctx->flags & (1 << 1) && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
-	padlen = ctx->prec - (len - !!((n < 0) || (ctx->flags & (1 << 2)) || (ctx->flags & (1 << 3))));
+	padlen = ctx->prec - (len - (n < 0));
 	if (padlen && padding('0', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
 	ft_putunbr((n < 0) * (-n) + (n >= 0) * n);

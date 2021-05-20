@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/19 20:34:18 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/20 21:19:56 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,13 @@ FT_SRCS	=	\
 			ft_intlen.c			\
 			ft_isdigit.c		\
 			ft_isspace.c		\
+			ft_putbyte.c		\
 			ft_putchar.c		\
 			ft_putnbr.c			\
 			ft_putnbr_bin.c		\
 			ft_putnbr_hexa.c	\
 			ft_putnbr_oct.c		\
+			ft_putstr.c			\
 			ft_putunbr.c		\
 			ft_strchr.c			\
 			ft_strlen.c			\
