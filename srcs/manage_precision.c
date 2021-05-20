@@ -19,19 +19,23 @@ char const	*manage_precision(char const *format, t_ctx *ctx, va_list va)
 
 	if (*format == '.')
 	{
-		ctx->precised = true;
-		ctx->flags &= ~(1 << 1);
 		if (*++format == '*')
 		{
 			tmp = va_arg(va, int);
 			if (tmp >> 31)
 				ctx->prec = 1;
 			else
+			{
+				ctx->precised = true;
+				ctx->flags &= ~(1 << 1);
 				ctx->prec = (uint32_t)tmp;
+			}
 			++format;
 		}
 		else
 		{
+			ctx->precised = true;
+			ctx->flags &= ~(1 << 1);
 			ctx->prec = ft_atou(format);
 			while (ft_isdigit(*format))
 				++format;

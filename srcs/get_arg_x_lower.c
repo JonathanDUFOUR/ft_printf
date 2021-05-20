@@ -58,8 +58,8 @@ int	get_arg_x_lower(t_ctx *ctx, va_list va)
 	len = xlen(n);
 	if (ctx->prec < len)
 		ctx->prec = len;
-	if (ctx->fwidth < (ctx->prec + 2 * !!(ctx->flags & (1 << 4))))
-		ctx->fwidth = ctx->prec + 2 * !!(ctx->flags & (1 << 4));
+	if (ctx->fwidth < (ctx->prec + !!(ctx->flags & (1 << 4)) * 2))
+		ctx->fwidth = ctx->prec + !!(ctx->flags & (1 << 4)) * 2;
 	ctx->len += ctx->fwidth;
 	if (ctx->fwidth > len)
 		return (padded_putnbr_hexa(n, len, ctx));
