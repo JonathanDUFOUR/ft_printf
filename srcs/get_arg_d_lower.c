@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 06:19:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/20 21:23:27 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/20 21:35:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,18 @@
 #include "libft.h"
 #include "ft_printf.h"
 
+static uint32_t	field_width_padlen(int n, t_ctx *ctx)
+{
+	return (ctx->fwidth
+		- ctx->prec
+		- !!((n < 0) || (ctx->flags & (1 << 2)) || (ctx->flags & (1 << 3))));
+}
+
 static int	padded_putnbr(int n, uint32_t len, t_ctx *ctx)
 {
 	uint32_t	padlen;
 
-	padlen = ctx->fwidth - ctx->prec - ((n < 0) || !!(ctx->flags & (1 << 2)) || !!(ctx->flags & (1 << 3)));
+	padlen = field_width_padlen(n, ctx);
 	if (!(ctx->flags & (1 << 0)) && !(ctx->flags & (1 << 1))
 		&& padding(' ', padlen) == MALLOC_ERRNO)
 		return (MALLOC_ERRNO);
@@ -37,7 +44,7 @@ static int	padded_putnbr(int n, uint32_t len, t_ctx *ctx)
 	ft_putunbr((n < 0) * (-n) + (n >= 0) * n);
 	if (ctx->flags & (1 << 0))
 	{
-		padlen = ctx->fwidth - ctx->prec - !!((n < 0) || (ctx->flags & (1 << 2)) || (ctx->flags & (1 << 2)));
+		padlen = field_width_padlen(n, ctx);
 		if (padding(' ', padlen) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 	}
@@ -60,8 +67,10 @@ int	get_arg_d_lower(t_ctx *ctx, va_list va)
 	len = ft_intlen(n);
 	if (ctx->prec < (len - (n < 0)))
 		ctx->prec = len - (n < 0);
-	if (ctx->fwidth < (ctx->prec + !!((n < 0) || (ctx->flags & (1 << 2)) || (ctx->flags & (1 << 3)))))
-		ctx->fwidth = ctx->prec + !!((n < 0) || (ctx->flags & (1 << 2)) || (ctx->flags & (1 << 3)));
+	if (ctx->fwidth < (ctx->prec + !!((n < 0) || (ctx->flags & (1 << 2))
+				|| (ctx->flags & (1 << 3)))))
+		ctx->fwidth = ctx->prec + !!((n < 0) || (ctx->flags & (1 << 2))
+				|| (ctx->flags & (1 << 3)));
 	ctx->len += ctx->fwidth;
 	if (ctx->fwidth > len)
 		return (padded_putnbr(n, len, ctx));

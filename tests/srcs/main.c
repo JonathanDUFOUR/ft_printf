@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/20 21:25:27 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/20 21:37:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 
-#define TEST "|%0+*.*d|\n", 22, -1, 6234
+#define TEST "|%0+ *.*d|\n", 12, 1, 6234
 
 int	main(void)
 {
