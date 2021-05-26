@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/20 21:19:56 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/26 03:49:02 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ INCLUDE	=	includes
 SRCD	=	srcs/
 OBJD	=	objs/
 LIBFTD	=	libft/
+FT_SRCD	=	srcs/
+
 CC		=	gcc -c -o
 LINKER	=	ar rcs
 MAKEDIR	=	mkdir -p
@@ -87,7 +89,7 @@ ${OBJD}%.o:	${SRCD}%.c
 	@${MAKEDIR} ${OBJD}
 	${CC} $@ ${CFLAGS} $<
 
-${OBJD}${LIBFTD}%.o:	${LIBFTD}%.c
+${OBJD}${LIBFTD}%.o:	${LIBFTD}${FT_SRCD}%.c
 	@${MAKEDIR} ${OBJD}
 	@${MAKEDIR} ${OBJD}${LIBFTD}
 	${CC} $@ ${CFLAGS} $<

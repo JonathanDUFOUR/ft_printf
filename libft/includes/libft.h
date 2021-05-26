@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:03:53 by jonathan          #+#    #+#             */
-/*   Updated: 2021/05/26 03:50:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/26 02:04:08 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void		ft_putnbr_oct(uint32_t n);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putstr(char const *s);
 void		ft_putstr_fd(char const *s, int fd);
-void		ft_putunbr(uint32_t n);
 void		ft_reverse_all_bytes(uint32_t *addr);
 void		ft_reverse_byte(uint32_t *addr, uint32_t idx);
 void		ft_reverse_each_byte(uint32_t *addr);

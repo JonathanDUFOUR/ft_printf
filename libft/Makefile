@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/15 11:52:33 by jojo              #+#    #+#              #
-#    Updated: 2021/05/18 06:06:54 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/26 03:24:39 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,11 @@ SHARED		=	libft.so
 CC			=	gcc -c -o
 LINKER		=	ar rcs
 RM			=	rm -rf
+MAKEDIR		=	mkdir -p
+
+SRCD		=	srcs/
+OBJD		=	objs/
+INCLUDE		=	includes/
 
 SRCS		=	ft_atoi_base.c			\
 				ft_atoi.c				\
@@ -31,11 +36,9 @@ SRCS		=	ft_atoi_base.c			\
 				ft_find_next_prime.c	\
 				ft_indexof.c			\
 				ft_intlen.c				\
-				ft_intsort.c			\
 				ft_isalnum.c			\
 				ft_isalpha.c			\
 				ft_isascii.c			\
-				ft_ischarset.c			\
 				ft_isdigit.c			\
 				ft_islower.c			\
 				ft_isprime.c			\
@@ -54,7 +57,6 @@ SRCS		=	ft_atoi_base.c			\
 				ft_lstnew.c				\
 				ft_lstsize.c			\
 				ft_lutoa_base.c			\
-				ft_memalloc.c			\
 				ft_memccpy.c			\
 				ft_memchr.c				\
 				ft_memcmp.c				\
@@ -84,26 +86,23 @@ SRCS		=	ft_atoi_base.c			\
 				ft_reverse_all_bytes.c	\
 				ft_reverse_byte.c		\
 				ft_reverse_each_byte.c	\
-				ft_set_bit.c			\
 				ft_split.c				\
 				ft_sqrt.c				\
 				ft_strcasecmp.c			\
 				ft_strcaseequ.c			\
 				ft_strcat.c				\
 				ft_strchr.c				\
-				ft_strclr.c				\
 				ft_strcmp.c				\
 				ft_strcpy.c				\
-				ft_strdel.c				\
 				ft_strdup.c				\
 				ft_strequ.c				\
 				ft_striter.c			\
 				ft_striteri.c			\
 				ft_strjoin.c			\
-				ft_neo_strjoin.c		\
 				ft_strlcat.c			\
 				ft_strlcpy.c			\
 				ft_strlen.c				\
+				ft_strlink.c			\
 				ft_strmap.c				\
 				ft_strmapi.c			\
 				ft_strncasecmp.c		\
@@ -113,7 +112,6 @@ SRCS		=	ft_atoi_base.c			\
 				ft_strncpy.c			\
 				ft_strndup.c			\
 				ft_strnequ.c			\
-				ft_strnew.c				\
 				ft_strnstr.c			\
 				ft_strrchr.c			\
 				ft_strrev.c				\
@@ -124,7 +122,6 @@ SRCS		=	ft_atoi_base.c			\
 				ft_swap.c				\
 				ft_swap_bits.c			\
 				ft_swap_strs.c			\
-				ft_toggle_bit.c			\
 				ft_toggle_byte.c		\
 				ft_toggle_nbyte.c		\
 				ft_tolower.c			\
@@ -132,15 +129,15 @@ SRCS		=	ft_atoi_base.c			\
 				ft_uintlen.c			\
 				ft_ultimate_tolower.c	\
 				ft_ultimate_toupper.c	\
-				ft_unset_bit.c			\
 				ft_utoa_base.c			\
 				ft_utoa.c				\
 				ft_wrong_base.c
 
 OBJS		:=	${SRCS:.c=.o}
+OBJS		:=	${addprefix ${OBJD}, ${OBJS}}
 DEPS		:=	${OBJS:.o=.d}
 
-CFLAGS		=	-Wall -Wextra -Werror -MMD
+CFLAGS		=	-Wall -Wextra -Werror -MMD -I ${INCLUDE}
 
 LDFLAGS		=
 
@@ -163,18 +160,18 @@ ${SHARED}:	${OBJS}
 
 so:	${SHARED}
 
-%.o:	%.c
+${OBJD}%.o:	${SRCD}%.c
+	@${MAKEDIR} ${OBJD}
 	${CC} $@ ${CFLAGS} $<
 
+bonus:
+	echo 'Nothing to do for bonus'
 clean:
-	@${RM} ${OBJS}
-	@${RM} ${DEPS}
+	${RM} ${OBJD}
 
 fclean:
-	@${RM} ${OBJS}
-	@${RM} ${DEPS}
-	@${RM} ${NAME} ${SHARED}
+	${RM} ${OBJD} ${NAME} ${SHARED}
 
 re: fclean all
 
-.PHONY: all clean fclean re so
+.PHONY: all clean fclean re so bonus
