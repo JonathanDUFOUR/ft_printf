@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 06:19:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/20 21:35:13 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/05/30 00:21:33 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include <unistd.h>
 #include "libft.h"
 #include "ft_printf.h"
+
+static void	flag_exception(t_ctx *ctx)
+{
+	if (ctx->flags & (1 << 2))
+		write(1, "+", 1);
+	else if (ctx->flags & (1 << 3))
+		write(1, " ", 1);
+	if (ctx->fwidth)
+		--ctx->fwidth;
+	++ctx->len;
+}
 
 static uint32_t	field_width_padlen(int n, t_ctx *ctx)
 {
@@ -59,6 +70,8 @@ int	get_arg_d_lower(t_ctx *ctx, va_list va)
 	n = va_arg(va, uint32_t);
 	if (!ctx->prec && !n)
 	{
+		if (ctx->flags & (1 << 2) || ctx->flags & (1 << 3))
+			flag_exception(ctx);
 		if (padding(' ', ctx->fwidth) == MALLOC_ERRNO)
 			return (MALLOC_ERRNO);
 		ctx->len += ctx->fwidth;
