@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/26 03:49:02 by jodufour         ###   ########.fr        #
+#    Updated: 2021/05/30 00:11:03 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,8 @@ ${NAME}:	${OBJS}
 
 all:	${NAME}
 
+bonus:	${NAME}
+
 -include ${DEPS}
 
 ${OBJD}%.o:	${SRCD}%.c
@@ -102,4 +104,4 @@ fclean:
 
 re:	fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all bonus clean fclean re
