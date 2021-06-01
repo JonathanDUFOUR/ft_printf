@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/05/30 00:11:03 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/01 23:27:46 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ FT_SRCS	=	\
 			ft_intlen.c			\
 			ft_isdigit.c		\
 			ft_isspace.c		\
-			ft_putbyte.c		\
+			ft_putbytes.c		\
 			ft_putchar.c		\
 			ft_putnbr.c			\
 			ft_putnbr_bin.c		\
@@ -42,28 +42,29 @@ FT_SRCS	=	\
 FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 
 SRCS	=	\
-			${FT_SRCS}				\
-			ft_printf.c				\
-			get_arg_c_lower.c		\
-			get_arg_s_lower.c		\
-			get_arg_p_lower.c		\
-			get_arg_d_lower.c		\
-			get_arg_u_lower.c		\
-			get_arg_x_lower.c		\
-			get_arg_x_upper.c		\
-			get_arg_o_lower.c		\
-			get_arg_b_lower.c		\
-			get_arg_prct.c			\
-			manage_arg.c			\
-			manage_flags.c			\
-			manage_field_width.c	\
-			manage_precision.c		\
-			manage_specifier.c		\
-			manage_text.c			\
-			padding.c				\
-			plen.c					\
-			xlen.c					\
-			olen.c					\
+			${FT_SRCS}					\
+			ft_printf.c					\
+			get_arg_c_lower.c			\
+			get_arg_s_lower.c			\
+			get_arg_p_lower.c			\
+			get_arg_d_lower.c			\
+			get_arg_u_lower.c			\
+			get_arg_x_lower.c			\
+			get_arg_x_upper.c			\
+			get_arg_o_lower.c			\
+			get_arg_b_lower.c			\
+			get_arg_prct.c				\
+			manage_arg.c				\
+			manage_flags.c				\
+			manage_field_width.c		\
+			manage_precision.c			\
+			manage_length_modifier.c	\
+			manage_specifier.c			\
+			manage_text.c				\
+			padding.c					\
+			plen.c						\
+			xlen.c						\
+			olen.c						\
 			blen.c
 
 OBJS	=	${SRCS:.c=.o}

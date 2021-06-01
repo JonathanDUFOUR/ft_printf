@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 06:19:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/30 00:21:33 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/01 23:39:19 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ static int	padded_putnbr(int n, uint32_t len, t_ctx *ctx)
 
 int	get_arg_d_lower(t_ctx *ctx, va_list va)
 {
-	int			n;
+	int32_t		n;
 	uint32_t	len;
 
-	n = va_arg(va, uint32_t);
+	n = va_arg(va, int32_t);
 	if (!ctx->prec && !n)
 	{
 		if (ctx->flags & (1 << 2) || ctx->flags & (1 << 3))

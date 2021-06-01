@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 05:30:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/01 23:25:32 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_ctx	t_ctx;
 struct s_ctx
 {
 	uint32_t	len;
-	uint8_t		flags;
+	uint16_t	flags;
 	uint32_t	fwidth;
 	uint32_t	prec;
 	bool		precised;
@@ -54,6 +54,7 @@ char const	*manage_arg(char const *format, t_ctx *ctx, va_list va);
 char const	*manage_flags(char const *format, t_ctx *ctx);
 char const	*manage_field_width(char const *format, t_ctx *ctx, va_list va);
 char const	*manage_precision(char const *format, t_ctx *ctx, va_list va);
+char const	*manage_length_modifier(char const *format, t_ctx *ctx);
 char const	*manage_specifier(char const *format, t_ctx *ctx, va_list va);
 char const	*manage_text(char const *format, t_ctx *ctx);
 int			padding(int c, uint32_t padlen);
