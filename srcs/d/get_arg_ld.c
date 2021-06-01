@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 06:19:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/02 00:49:26 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 01:42:29 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int	padded_putnbr(long long int n, uint32_t len, t_ctx *ctx);
+int		padded_putnbr(long long int n, uint32_t len, t_ctx *ctx);
+void	putllnbr(long long int n);
 
 static void	flag_exception(t_ctx *ctx)
 {
@@ -26,13 +27,6 @@ static void	flag_exception(t_ctx *ctx)
 	if (ctx->fwidth)
 		--ctx->fwidth;
 	++ctx->len;
-}
-
-static uint32_t	field_width_padlen(int n, t_ctx *ctx)
-{
-	return (ctx->fwidth
-		- ctx->prec
-		- !!((n < 0) || (ctx->flags & (1 << 2)) || (ctx->flags & (1 << 3))));
 }
 
 int	get_arg_ld(t_ctx *ctx, va_list va)
@@ -59,7 +53,7 @@ int	get_arg_ld(t_ctx *ctx, va_list va)
 				|| (ctx->flags & (1 << 3)));
 	ctx->len += ctx->fwidth;
 	if (ctx->fwidth > len)
-		return (padded_putnbr(n, len, ctx));
-	ft_putnbr(n);
+		return (padded_putnbr((long long int)n, len, ctx));
+	putllnbr((long long int)n);
 	return (SUCCESS);
 }

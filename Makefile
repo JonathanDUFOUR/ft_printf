@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/02 00:52:25 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/02 01:38:55 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,13 @@ SRCS	=	\
 			b/get_arg_b.c				\
 			%/get_arg_prct.c			\
 			d/dlen.c					\
+			d/d_dispatch.c				\
 			d/get_arg_d.c				\
+			d/get_arg_hd.c				\
+			d/get_arg_hhd.c				\
+			d/get_arg_ld.c				\
+			d/get_arg_lld.c				\
+			d/putllnbr.c				\
 			d/padded_putnbr.c			\
 			x/xlen.c					\
 			o/olen.c					\
