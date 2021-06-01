@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/01 23:25:32 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/01 23:56:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@
 /* Remove it when finished */
 # include <stdio.h>
 
+/*
+**	(1 << 0) -> '-'
+**	(1 << 1) -> '0'
+**	(1 << 2) -> '+'
+**	(1 << 3) -> ' '
+**	(1 << 4) -> '#'
+**
+**	(1 << 5) -> l
+**	(1 << 6) -> ll
+**	(1 << 7) -> h
+**	(1 << 8) -> hh
+*/
 # define FLAG_CHARS		"-0+ #"
 # define LEN_MODIF		"hlqL"
 # define CONVERT_SPEC	"cspdiuxX%"
