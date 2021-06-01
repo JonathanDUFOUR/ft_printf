@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 01:35:21 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/02 01:42:55 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 01:49:20 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	putllnbr(long long int n)
 {
 	unsigned long long int	abs;
-	char	d;
+	char					d;
 
 	abs = n;
 	if (n < 0)

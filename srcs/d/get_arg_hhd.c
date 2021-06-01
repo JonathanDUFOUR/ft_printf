@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 06:19:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/02 01:42:43 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 01:49:33 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	flag_exception(t_ctx *ctx)
 
 int	get_arg_hhd(t_ctx *ctx, va_list va)
 {
-	int		n;
+	int			n;
 	uint32_t	len;
 
 	n = va_arg(va, int);
