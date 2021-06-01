@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_arg_p_lower.c                                  :+:      :+:    :+:   */
+/*   get_arg_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:29 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 06:30:28 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 00:59:42 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	padded_putnbr_hexa(uint64_t n, uint32_t len, t_ctx *ctx)
 	return (SUCCESS);
 }
 
-int	get_arg_p_lower(t_ctx *ctx, va_list va)
+int	get_arg_p(t_ctx *ctx, va_list va)
 {
 	uint64_t	n;
 	uint32_t	len;

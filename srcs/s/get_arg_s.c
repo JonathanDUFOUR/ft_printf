@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_arg_s_lower.c                                  :+:      :+:    :+:   */
+/*   get_arg_s.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 06:27:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 00:59:53 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	padded_putnstr(char *s, t_ctx *ctx)
 	return (SUCCESS);
 }
 
-int	get_arg_s_lower(t_ctx *ctx, va_list va)
+int	get_arg_s(t_ctx *ctx, va_list va)
 {
 	char		*s;
 	uint32_t	len;

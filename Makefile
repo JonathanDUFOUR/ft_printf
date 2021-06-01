@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/02 00:19:34 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/02 00:52:25 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,16 +57,6 @@ SPECD	:=	${addprefix ${OBJD}, ${SPECD}}
 SRCS	=	\
 			${FT_SRCS}					\
 			ft_printf.c					\
-			c/get_arg_c_lower.c			\
-			s/get_arg_s_lower.c			\
-			p/get_arg_p_lower.c			\
-			d/get_arg_d_lower.c			\
-			u/get_arg_u_lower.c			\
-			x/get_arg_x_lower.c			\
-			x/get_arg_x_upper.c			\
-			o/get_arg_o_lower.c			\
-			b/get_arg_b_lower.c			\
-			%/get_arg_prct.c			\
 			manage_arg.c				\
 			manage_flags.c				\
 			manage_field_width.c		\
@@ -75,7 +65,20 @@ SRCS	=	\
 			manage_specifier.c			\
 			manage_text.c				\
 			padding.c					\
+			c/get_arg_c.c				\
+			s/get_arg_s.c				\
 			p/plen.c					\
+			p/get_arg_p.c				\
+			u/ulen.c					\
+			u/get_arg_u.c				\
+			x/get_arg_x_lower.c			\
+			x/get_arg_x_upper.c			\
+			o/get_arg_o.c				\
+			b/get_arg_b.c				\
+			%/get_arg_prct.c			\
+			d/dlen.c					\
+			d/get_arg_d.c				\
+			d/padded_putnbr.c			\
 			x/xlen.c					\
 			o/olen.c					\
 			b/blen.c

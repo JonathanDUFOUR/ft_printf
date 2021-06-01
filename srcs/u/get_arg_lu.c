@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_arg_u_lower.c                                  :+:      :+:    :+:   */
+/*   get_arg_lu.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:39:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 06:29:54 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 00:55:42 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static int	padded_putunbr(uint32_t n, uint32_t len, t_ctx *ctx)
 	return (SUCCESS);
 }
 
-int	get_arg_u_lower(t_ctx *ctx, va_list va)
+int	get_arg_lu(t_ctx *ctx, va_list va)
 {
-	uint32_t	n;
-	uint32_t	len;
+	unsigned int	n;
+	uint32_t		len;
 
-	n = va_arg(va, uint32_t);
+	n = va_arg(va, unsigned int);
 	if (!ctx->prec && !n)
 	{
 		if (padding(' ', ctx->fwidth) == MALLOC_ERRNO)
@@ -52,7 +52,7 @@ int	get_arg_u_lower(t_ctx *ctx, va_list va)
 		ctx->len += ctx->fwidth;
 		return (SUCCESS);
 	}
-	len = ft_uintlen(n);
+	len = ulen((unsigned long long int)n);
 	if (ctx->prec < len)
 		ctx->prec = len;
 	if (ctx->fwidth < ctx->prec)

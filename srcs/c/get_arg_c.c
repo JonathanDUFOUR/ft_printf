@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_arg_c_lower.c                                  :+:      :+:    :+:   */
+/*   get_arg_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:29:36 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 06:26:17 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 00:59:00 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	padded_putchar(int c, uint8_t flags, uint32_t field_width)
 	return (SUCCESS);
 }
 
-int	get_arg_c_lower(t_ctx *ctx, va_list va)
+int	get_arg_c(t_ctx *ctx, va_list va)
 {
 	int		c;
 

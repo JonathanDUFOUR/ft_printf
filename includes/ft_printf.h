@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/01 23:56:03 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 00:40:43 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ char const	*manage_length_modifier(char const *format, t_ctx *ctx);
 char const	*manage_specifier(char const *format, t_ctx *ctx, va_list va);
 char const	*manage_text(char const *format, t_ctx *ctx);
 int			padding(int c, uint32_t padlen);
+uint32_t	dlen(long long int n);
+uint32_t	ulen(unsigned long long int n);
 uint32_t	plen(uint64_t n);
 uint32_t	xlen(uint32_t n);
 uint32_t	olen(uint32_t n);
