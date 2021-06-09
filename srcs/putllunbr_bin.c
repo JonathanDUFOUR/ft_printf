@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blen.c                                             :+:      :+:    :+:   */
+/*   putllunbr_bin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 21:10:24 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:52:20 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/03 01:54:06 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/03 02:31:46 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "ft_printf.h"
 
-uint32_t	blen(LLU n)
+void	putllunbr_bin(LLU n)
 {
-	uint32_t	len;
+	char	d;
 
-	len = 1;
-	while (n > 1)
-	{
-		++len;
-		n /= 2;
-	}
-	return (len);
+	if (n > 1)
+		putllunbr_bin(n / 2);
+	d = n % 2 + '0';
+	write(1, &d, 1);
 }

@@ -6,13 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 20:36:53 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 05:19:47 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/03 02:57:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
+#include "ft_printf.h"
 
-uint32_t	olen(uint32_t n)
+uint32_t	olen(LLU n)
 {
 	uint32_t	len;
 

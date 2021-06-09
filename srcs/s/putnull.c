@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putllnbr.c                                         :+:      :+:    :+:   */
+/*   putnull.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 01:35:21 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/02 01:49:20 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/05 15:43:20 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/05 16:00:27 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "ft_printf.h"
 
-void	putllnbr(long long int n)
+int	padded_putnstr(char *s, t_ctx *ctx);
+
+int	putnull(t_ctx *ctx)
 {
-	unsigned long long int	abs;
-	char					d;
+	uint32_t	len;
 
-	abs = n;
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		abs = -n;
-	}
-	if (abs > 9)
-		putllnbr(abs / 10);
-	d = abs % 10 + '0';
-	write(1, &d, 1);
+	len = 6;
+	if (!ctx->precised || ctx->prec > len)
+		ctx->prec = len;
+	if (ctx->fwidth < ctx->prec)
+		ctx->fwidth = ctx->prec;
+	ctx->len += ctx->fwidth;
+	if (ctx->fwidth > ctx->prec)
+		return (padded_putnstr("(null)", ctx));
+	write(1, "(null)", ctx->prec);
+	return (SUCCESS);
 }

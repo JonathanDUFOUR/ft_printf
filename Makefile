@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/02 01:38:55 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/06 16:20:42 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,20 +24,12 @@ RM		=	rm -rf
 
 FT_SRCS	=	\
 			ft_atou.c			\
-			ft_intlen.c			\
 			ft_isdigit.c		\
 			ft_isspace.c		\
-			ft_putbytes.c		\
-			ft_putchar.c		\
-			ft_putnbr.c			\
-			ft_putnbr_bin.c		\
-			ft_putnbr_hexa.c	\
-			ft_putnbr_oct.c		\
-			ft_putstr.c			\
-			ft_putunbr.c		\
+			ft_memcpy.c			\
 			ft_strchr.c			\
 			ft_strlen.c			\
-			ft_uintlen.c		\
+			ft_putchar.c
 
 FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
 
@@ -65,29 +57,48 @@ SRCS	=	\
 			manage_specifier.c			\
 			manage_text.c				\
 			padding.c					\
+			putllnbr.c					\
+			putllunbr.c					\
+			putllunbr_bin.c				\
+			putllunbr_oct.c				\
+			putllunbr_hexa.c			\
+\
+			c/wclen.c					\
 			c/get_arg_c.c				\
+\
+			s/wstrlen.c					\
+			s/wstrsize.c				\
 			s/get_arg_s.c				\
+			s/putnull.c					\
+			s/padded_putnstr.c			\
+			s/padded_putnwstr.c			\
+\
+			b/blen.c					\
+			b/get_arg_b.c				\
+			b/padded_putllunbr_bin.c	\
+\
+			d/dlen.c					\
+			d/flag_exception.c			\
+			d/get_arg_d.c				\
+			d/padded_putllnbr.c			\
+\
+			o/olen.c					\
+			o/get_arg_o.c				\
+			o/padded_putllunbr_oct.c	\
+\
 			p/plen.c					\
 			p/get_arg_p.c				\
+			p/padded_putaddr.c			\
+\
 			u/ulen.c					\
 			u/get_arg_u.c				\
+\
+			x/xlen.c					\
 			x/get_arg_x_lower.c			\
 			x/get_arg_x_upper.c			\
-			o/get_arg_o.c				\
-			b/get_arg_b.c				\
+			x/padded_putllunbr_hexa.c	\
+\
 			%/get_arg_prct.c			\
-			d/dlen.c					\
-			d/d_dispatch.c				\
-			d/get_arg_d.c				\
-			d/get_arg_hd.c				\
-			d/get_arg_hhd.c				\
-			d/get_arg_ld.c				\
-			d/get_arg_lld.c				\
-			d/putllnbr.c				\
-			d/padded_putnbr.c			\
-			x/xlen.c					\
-			o/olen.c					\
-			b/blen.c
 
 OBJS	=	${SRCS:.c=.o}
 OBJS	:=	${addprefix ${OBJD}, ${OBJS}}

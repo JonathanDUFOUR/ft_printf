@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blen.c                                             :+:      :+:    :+:   */
+/*   flag_exception.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 21:10:24 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:52:20 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/02 16:11:15 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/02 16:14:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "ft_printf.h"
 
-uint32_t	blen(LLU n)
+void	flag_exception(t_ctx *ctx)
 {
-	uint32_t	len;
-
-	len = 1;
-	while (n > 1)
-	{
-		++len;
-		n /= 2;
-	}
-	return (len);
+	if (ctx->flags & (1 << 2))
+		write(1, "+", 1);
+	else if (ctx->flags & (1 << 3))
+		write(1, " ", 1);
+	if (ctx->fwidth)
+		--ctx->fwidth;
+	++ctx->len;
 }

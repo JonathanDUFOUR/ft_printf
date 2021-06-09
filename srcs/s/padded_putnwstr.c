@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blen.c                                             :+:      :+:    :+:   */
+/*   padded_putnwstr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 21:10:24 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:52:20 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/05 16:03:18 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/06 16:56:32 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "ft_printf.h"
 
-uint32_t	blen(LLU n)
+int	padded_putnwstr(wchar_t *s, t_ctx *ctx, uint32_t len, uint32_t size)
 {
-	uint32_t	len;
-
-	len = 1;
-	while (n > 1)
-	{
-		++len;
-		n /= 2;
-	}
-	return (len);
+	len = ctx->prec;
+	if (!(ctx->flags & (1 << 0))
+		&& padding(' ', ctx->fwidth - size) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
+	while (len--)
+		if (ft_putchar(*s++) == -1)
+			return (WRITE_ERRNO);
+	if (ctx->flags & (1 << 0)
+		&& padding(' ', ctx->fwidth - size) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
+	return (SUCCESS);
 }

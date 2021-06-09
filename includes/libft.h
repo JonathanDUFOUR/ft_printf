@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:03:53 by jonathan          #+#    #+#             */
-/*   Updated: 2021/05/26 03:50:39 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/06 16:42:20 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define LIBFT_H
 
 # include <stdint.h>
-# include <sys/types.h>
-# include <inttypes.h>
+# include <unistd.h>
+# include <string.h>
+# include <wchar.h>
+# include <stdint.h>
 # include <stdbool.h>
 
 # define BUFF_SIZE 8192
@@ -77,8 +79,8 @@ void		ft_padded_putnbr_base(uint32_t n, char const *b, uint8_t l);
 int			ft_power(int n, uint32_t pow);
 void		ft_putbyte(uint8_t byte);
 void		ft_putbytes(void *addr, size_t size);
-void		ft_putchar(char c);
-void		ft_putchar_fd(char c, int fd);
+int			ft_putchar(wchar_t c);
+int			ft_putchar_fd(wchar_t c, int fd);
 void		ft_putendl(char const *s);
 void		ft_putendl_fd(char const *s, int fd);
 void		ft_putlnbr(int64_t n);
@@ -91,7 +93,6 @@ void		ft_putnbr_oct(uint32_t n);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putstr(char const *s);
 void		ft_putstr_fd(char const *s, int fd);
-void		ft_putunbr(uint32_t n);
 void		ft_reverse_all_bytes(uint32_t *addr);
 void		ft_reverse_byte(uint32_t *addr, uint32_t idx);
 void		ft_reverse_each_byte(uint32_t *addr);

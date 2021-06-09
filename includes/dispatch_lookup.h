@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 04:09:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/02 01:18:14 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 16:29:52 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int	get_arg_c(t_ctx *ctx, va_list va);
 int	get_arg_s(t_ctx *ctx, va_list va);
 int	get_arg_p(t_ctx *ctx, va_list va);
-int	d_dispatch(t_ctx *ctx, va_list va);
+int	get_arg_d(t_ctx *ctx, va_list va);
 int	get_arg_u(t_ctx *ctx, va_list va);
 int	get_arg_x_lower(t_ctx *ctx, va_list va);
 int	get_arg_x_upper(t_ctx *ctx, va_list va);
@@ -30,8 +30,8 @@ static const t_cvrt	g_cvrt[] = {
 	{'c', true, get_arg_c},
 	{'s', true, get_arg_s},
 	{'p', true, get_arg_p},
-	{'d', true, d_dispatch},
-	{'i', true, d_dispatch},
+	{'d', true, get_arg_d},
+	{'i', true, get_arg_d},
 	{'u', true, get_arg_u},
 	{'x', true, get_arg_x_lower},
 	{'X', true, get_arg_x_upper},

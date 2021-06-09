@@ -6,13 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 07:30:33 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 05:19:43 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/03 02:57:45 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
+#include "ft_printf.h"
 
-uint32_t	plen(uint64_t n)
+uint32_t	plen(LU n)
 {
 	uint32_t	len;
 
