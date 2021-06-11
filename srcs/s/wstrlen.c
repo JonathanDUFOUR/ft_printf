@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blen.c                                             :+:      :+:    :+:   */
+/*   wstrlen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 21:10:24 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:52:20 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/05 15:39:10 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/06 16:17:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <wchar.h>
+#include <stdint.h>
 
-uint32_t	blen(LLU n)
+uint32_t	wstrlen(wchar_t *s)
 {
-	uint32_t	len;
+	register wchar_t const	*p = s;
 
-	len = 1;
-	while (n > 1)
-	{
-		++len;
-		n /= 2;
-	}
-	return (len);
+	while (*p)
+		++p;
+	return (p - s);
 }

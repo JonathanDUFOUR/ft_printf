@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padded_putnbr.c                                    :+:      :+:    :+:   */
+/*   padded_putllnbr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 00:45:59 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/02 01:38:31 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/03 02:01:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_printf.h"
 
-void	putllunbr(unsigned long long int n)
-{
-	char	d;
-
-	if (n > 9)
-		putllunbr(n / 10);
-	d = n % 10 + '0';
-	write(1, &d, 1);
-}
-
-static uint32_t	field_width_padlen(long long int n, t_ctx *ctx)
+static uint32_t	field_width_padlen(LLD n, t_ctx *ctx)
 {
 	return (ctx->fwidth
 		- ctx->prec
 		- !!((n < 0) || (ctx->flags & (1 << 2)) || (ctx->flags & (1 << 3))));
 }
 
-int	padded_putnbr(long long int n, uint32_t len, t_ctx *ctx)
+int	padded_putllnbr(LLD n, uint32_t len, t_ctx *ctx)
 {
 	uint32_t	padlen;
 

@@ -6,13 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 06:29:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 05:19:45 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/03 03:01:09 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
+#include "ft_printf.h"
 
-uint32_t	xlen(uint32_t n)
+uint32_t	xlen(LLU n)
 {
 	uint32_t	len;
 

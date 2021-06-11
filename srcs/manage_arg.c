@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "libft.h"
 #include "ft_printf.h"
 
 char const	*manage_arg(char const *format, t_ctx *ctx, va_list va)

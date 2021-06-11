@@ -6,13 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 00:39:47 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/02 00:40:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 17:20:30 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
+#include "ft_printf.h"
 
-uint32_t	ulen(unsigned long long int n)
+uint32_t	ulen(LLU n)
 {
 	uint32_t	len;
 

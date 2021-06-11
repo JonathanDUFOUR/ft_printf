@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   putllunbr_hexa.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 01:31:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/01 23:29:42 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/03 01:47:48 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/03 02:32:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <unistd.h>
 #include "ft_printf.h"
 
-#define TEST "|%hd|\n", 6234
-
-int	main(void)
+void	putllunbr_hexa(LLU n, char c)
 {
-	int	ret;
-	int	ft_ret;
+	int		mod;
+	char	d;
 
-	ft_ret = ft_printf(TEST);
-	ret = printf(TEST);
-	fflush(stdout);
-	printf("ft_ret -> %d\n", ft_ret);
-	fflush(stdout);
-	printf("   ret -> %d\n", ret);
-	fflush(stdout);
-	return (SUCCESS);
+	if (n > 15)
+		putllunbr_hexa(n / 16, c);
+	mod = n % 16;
+	if (mod > 9)
+		d = mod - 10 + c;
+	else
+		d = mod + '0';
+	write(1, &d, 1);
 }

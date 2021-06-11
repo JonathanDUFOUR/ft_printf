@@ -6,13 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 00:30:54 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/02 00:58:32 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/02 17:21:08 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
+#include "ft_printf.h"
 
-uint32_t	dlen(long long int n)
+uint32_t	dlen(LLD n)
 {
 	uint32_t	len;
 

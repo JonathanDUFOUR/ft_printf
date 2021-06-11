@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdarg.h>
 #include "ft_printf.h"
 #include "dispatch_lookup.h"
 

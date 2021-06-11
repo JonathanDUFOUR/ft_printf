@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blen.c                                             :+:      :+:    :+:   */
+/*   wclen.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 21:10:24 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:52:20 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/05 15:00:34 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/05 15:06:21 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <wchar.h>
+#include <stdint.h>
 
-uint32_t	blen(LLU n)
+uint32_t	wclen(wchar_t c)
 {
 	uint32_t	len;
 
 	len = 1;
-	while (n > 1)
-	{
+	if (c >= 0x80 && ++len && c >= 0x800 && ++len && c >= 0x10000)
 		++len;
-		n /= 2;
-	}
 	return (len);
 }

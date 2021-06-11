@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blen.c                                             :+:      :+:    :+:   */
+/*   putllnbr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 21:10:24 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:52:20 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/02 01:35:21 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/03 01:55:02 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "ft_printf.h"
 
-uint32_t	blen(LLU n)
+void	putllnbr(LLD n)
 {
-	uint32_t	len;
+	LLU		abs;
+	char	d;
 
-	len = 1;
-	while (n > 1)
+	abs = n;
+	if (n < 0)
 	{
-		++len;
-		n /= 2;
+		write(1, "-", 1);
+		abs = -n;
 	}
-	return (len);
+	if (abs > 9)
+		putllnbr(abs / 10);
+	d = abs % 10 + '0';
+	write(1, &d, 1);
 }

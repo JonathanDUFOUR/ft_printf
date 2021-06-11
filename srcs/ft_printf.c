@@ -6,14 +6,12 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:58:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/18 05:30:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/06 16:03:31 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
 #include "ft_printf.h"
-#include "libft.h"
 
 static void	init_ctx(t_ctx *ctx)
 {

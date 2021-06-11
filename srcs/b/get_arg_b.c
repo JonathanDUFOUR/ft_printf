@@ -6,44 +6,34 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 20:54:16 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/02 00:59:07 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/03 02:52:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
-#include "libft.h"
 #include "ft_printf.h"
 
-static int	padded_ft_putnbr_bin(uint32_t n, uint32_t len, t_ctx *ctx)
-{
-	uint32_t	padlen;
+int	padded_putllunbr_bin(LLU n, uint32_t len, t_ctx *ctx);
 
-	padlen = ctx->fwidth - ctx->prec;
-	if (!(ctx->flags & (1 << 0)) && !(ctx->flags & (1 << 1))
-		&& padding(' ', padlen) == MALLOC_ERRNO)
-		return (MALLOC_ERRNO);
-	if (ctx->flags & (1 << 1) && padding('0', padlen) == MALLOC_ERRNO)
-		return (MALLOC_ERRNO);
-	padlen = ctx->prec - len;
-	if (padlen && padding('0', padlen) == MALLOC_ERRNO)
-		return (MALLOC_ERRNO);
-	ft_putnbr_bin(n);
-	if (ctx->flags & (1 << 0))
-	{
-		padlen = ctx->fwidth - ctx->prec;
-		if (padding(' ', padlen) == MALLOC_ERRNO)
-			return (MALLOC_ERRNO);
-	}
-	return (SUCCESS);
+static LLU	get_right_type(t_ctx *ctx, va_list va)
+{
+	if (ctx->flags & (1 << 5))
+		return ((LLU)va_arg(va, LU));
+	else if (ctx->flags & (1 << 6))
+		return ((LLU)va_arg(va, LLU));
+	else if (ctx->flags & (1 << 7))
+		return ((LLU)((HU)va_arg(va, unsigned int)));
+	else if (ctx->flags & (1 << 8))
+		return ((LLU)((HHU)va_arg(va, unsigned int)));
+	else
+		return ((LLU)va_arg(va, unsigned int));
 }
 
 int	get_arg_b(t_ctx *ctx, va_list va)
 {
-	uint32_t	n;
+	LLU			n;
 	uint32_t	len;
 
-	n = va_arg(va, uint32_t);
+	n = get_right_type(ctx, va);
 	if (!ctx->prec && !n)
 	{
 		if (padding(' ', ctx->fwidth) == MALLOC_ERRNO)
@@ -58,7 +48,7 @@ int	get_arg_b(t_ctx *ctx, va_list va)
 		ctx->fwidth = ctx->prec;
 	ctx->len += ctx->fwidth;
 	if (ctx->fwidth > len)
-		return (padded_ft_putnbr_bin(n, len, ctx));
-	ft_putnbr_bin(n);
+		return (padded_putllunbr_bin(n, len, ctx));
+	putllunbr_bin(n);
 	return (SUCCESS);
 }
