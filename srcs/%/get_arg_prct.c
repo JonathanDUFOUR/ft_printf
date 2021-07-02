@@ -6,12 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 06:58:39 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/07 11:10:13 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:46:19 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_printf.h"
+#include "e_ret.h"
 
 static int	padded_putprct(uint8_t flags, uint32_t padlen)
 {

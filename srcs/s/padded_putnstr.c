@@ -6,12 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:01:46 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/07 11:32:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:49:02 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_printf.h"
+#include "e_ret.h"
 
 int	padded_putnstr(char *s, t_ctx *ctx)
 {

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/06 17:01:44 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:48:51 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include "libft.h"
 #include "ft_printf.h"
+#include "e_ret.h"
 
 uint32_t	wstrlen(wchar_t *s);
 uint32_t	wstrsize(wchar_t *s);

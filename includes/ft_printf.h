@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:32:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/06 16:46:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:44:53 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <stdint.h>
 # include <stdarg.h>
 # include <stdbool.h>
-
-/* Remove it when finished */
-# include <stdio.h>
 
 # define LU		unsigned long int
 # define LLU	unsigned long long int
@@ -68,13 +65,6 @@ enum	e_style
 {
 	LOWER,
 	UPPER
-};
-
-enum	e_ret
-{
-	WRITE_ERRNO = -2,
-	MALLOC_ERRNO = -1,
-	SUCCESS
 };
 
 int			ft_printf(char const *format, ...);

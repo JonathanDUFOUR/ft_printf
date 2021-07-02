@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 #include "dispatch_lookup.h"
+#include "e_ret.h"
 
 char const	*manage_specifier(char const *format, t_ctx *ctx, va_list va)
 {

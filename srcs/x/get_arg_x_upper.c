@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "e_ret.h"
 
 int	padded_putllunbr_hexa(LLU n, uint32_t len, t_ctx *ctx, int style);
 

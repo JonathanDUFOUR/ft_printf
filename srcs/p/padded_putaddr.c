@@ -6,12 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 02:44:07 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:44:30 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:48:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_printf.h"
+#include "e_ret.h"
 
 int	padded_putaddr(LU n, uint32_t len, t_ctx *ctx)
 {

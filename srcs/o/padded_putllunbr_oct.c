@@ -6,12 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 02:06:12 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:33:48 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:48:22 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_printf.h"
+#include "e_ret.h"
 
 int	padded_putllunbr_oct(LLU n, uint32_t len, t_ctx *ctx)
 {

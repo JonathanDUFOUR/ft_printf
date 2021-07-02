@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   e_ret.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/07/02 14:45:56 by jodufour         ###   ########.fr       */
+/*   Created: 2021/07/02 14:44:05 by jodufour          #+#    #+#             */
+/*   Updated: 2021/07/02 14:45:00 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "ft_printf.h"
-#include "e_ret.h"
+#ifndef	E_RET_H
+# define E_RET_H
 
-int	padding(int c, uint32_t padlen)
+enum	e_ret
 {
-	char	*padding;
-	char	*p;
+	WRITE_ERRNO = -2,
+	MALLOC_ERRNO = -1,
+	SUCCESS
+};
 
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERRNO);
-	p = padding;
-	while (padlen--)
-		*p++ = c;
-	*p = 0;
-	write(1, padding, p - padding);
-	free(padding);
-	return (SUCCESS);
-}
+#endif

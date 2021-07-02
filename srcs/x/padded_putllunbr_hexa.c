@@ -6,12 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 02:17:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:38:28 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:50:14 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_printf.h"
+#include "e_ret.h"
 
 int	padded_putllunbr_hexa(LLU n, uint32_t len, t_ctx *ctx, int style)
 {

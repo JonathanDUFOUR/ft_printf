@@ -6,12 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:03:18 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/06 16:56:32 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:49:10 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
+#include "e_ret.h"
 
 int	padded_putnwstr(wchar_t *s, t_ctx *ctx, uint32_t len, uint32_t size)
 {

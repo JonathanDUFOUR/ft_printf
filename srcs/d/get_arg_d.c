@@ -6,12 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 06:19:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/03 02:56:37 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:47:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_printf.h"
+#include "e_ret.h"
 
 void	flag_exception(t_ctx *ctx);
 int		padded_putllnbr(LLD n, uint32_t len, t_ctx *ctx);
