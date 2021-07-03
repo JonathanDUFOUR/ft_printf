@@ -6,11 +6,11 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 14:44:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/07/02 14:45:00 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/07/02 14:59:21 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	E_RET_H
+#ifndef E_RET_H
 # define E_RET_H
 
 enum	e_ret
