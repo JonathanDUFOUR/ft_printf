@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 15:02:31 by jodufour          #+#    #+#              #
-#    Updated: 2021/11/11 11:16:09 by jodufour         ###   ########.fr        #
+#    Updated: 2021/11/11 17:02:56 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ DEP		=	${OBJ:.o=.d}
 #######################################
 CFLAGS	=	-Wall -Wextra -Werror
 CFLAGS	+=	-MMD -MP
+CFLAGS	+=	-I${INC_DIR}
 CFLAGS	+=	-I${PRV_DIR}
 
 LDFLAGS	=	
@@ -106,7 +107,10 @@ endif
 ${NAME}:	${OBJ}
 	${LINK} $@ $^ ${LDFLAGS}
 
-all:	${NAME}
+test:	${OBJ_DIR}main.o ${NAME}
+	clang -o $@ $^
+
+all:	${NAME} test
 
 bonus:	${NAME}
 
@@ -120,7 +124,7 @@ clean:
 	${RM} ${OBJ_DIR}
 
 fclean:
-	${RM} ${OBJ_DIR} ${NAME}
+	${RM} ${OBJ_DIR} ${NAME} test
 
 re:	fclean all
 
