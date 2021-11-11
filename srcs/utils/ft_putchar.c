@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/10 16:51:30 by jodufour         ###   ########.fr       */
+/*   Created: 2021/11/11 10:31:15 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/11 10:33:01 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <unistd.h>
-#include "enum/e_ret.h"
 
-int	padding(int const c, int padlen)
+int	ft_putchar(char const c)
 {
-	char	*padding;
-	char	*ptr;
-
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERR);
-	ptr = padding;
-	while (padlen--)
-		*ptr++ = c;
-	*ptr = 0;
-	write(1, padding, ptr - padding);
-	free(padding);
-	return (SUCCESS);
+	return ((int)write(1, &c, 1));
 }

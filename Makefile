@@ -5,138 +5,126 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/28 01:04:16 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/06 16:20:42 by jodufour         ###   ########.fr        #
+#    Created: 2021/11/10 15:02:31 by jodufour          #+#    #+#              #
+#    Updated: 2021/11/11 11:16:09 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libftprintf.a
-INCLUDE	=	includes
-SRCD	=	srcs/
-OBJD	=	objs/
-LIBFTD	=	libft/
-FT_SRCD	=	srcs/
-
-CC		=	gcc -c -o
-LINKER	=	ar rcs
-MAKEDIR	=	mkdir -p
+######################################
+#              COMMANDS              #
+######################################
+CC		=	clang -c -o
+LINK	=	ar rcs
+MKDIR	=	mkdir -p
 RM		=	rm -rf
 
-FT_SRCS	=	\
-			ft_atou.c			\
-			ft_isdigit.c		\
-			ft_isspace.c		\
-			ft_memcpy.c			\
-			ft_strchr.c			\
-			ft_strlen.c			\
-			ft_putchar.c
+#######################################
+#              LIBRARIES              #
+#######################################
+NAME	=	libftprintf.a
 
-FT_SRCS	:=	${addprefix ${LIBFTD}, ${FT_SRCS}}
+#######################################
+#             DIRECTORIES             #
+#######################################
+SRC_DIR	=	srcs/
+OBJ_DIR	=	objs/
+INC_DIR	=	include/
+PRV_DIR	=	private/
 
-SPECD	=	\
-			%/	\
-			b/	\
-			c/	\
-			d/	\
-			o/	\
-			p/	\
-			s/	\
-			u/	\
-			x/
+######################################
+#            SOURCE FILES            #
+######################################
+SRC		=	\
+			${addprefix cvrt/,		\
+				cvrt_b.c			\
+				cvrt_c.c			\
+				cvrt_d.c			\
+				cvrt_o.c			\
+				cvrt_p.c			\
+				cvrt_prct.c			\
+				cvrt_s.c			\
+				cvrt_u.c			\
+				cvrt_x.c			\
+				putnil.c			\
+				putnull.c			\
+			}						\
+			${addprefix utils/,		\
+				ft_atoi.c			\
+				ft_isdigit.c		\
+				ft_isspace.c		\
+				ft_llintlen.c		\
+				ft_lluintlen_bin.c	\
+				ft_lluintlen_hexa.c	\
+				ft_lluintlen_oct.c	\
+				ft_lluintlen.c		\
+				ft_putchar.c		\
+				ft_putllint.c		\
+				ft_putlluint_bin.c	\
+				ft_putlluint_hexa.c	\
+				ft_putlluint_oct.c	\
+				ft_putlluint.c		\
+				ft_putwchar.c		\
+				ft_strchr.c			\
+				ft_strlen.c			\
+				ft_wclen.c			\
+				ft_wstrlen.c		\
+				ft_wstrsize.c		\
+			}						\
+			ft_printf.c				\
+			manage_cvrt.c			\
+			manage_text.c			\
+			padding.c				\
+			parse_flags.c			\
+			parse_fwidth.c			\
+			parse_lmod.c			\
+			parse_prec.c
 
-SPECD	:=	${addprefix ${OBJD}, ${SPECD}}
+######################################
+#            OBJECT FILES            #
+######################################
+OBJ		=	${SRC:.c=.o}
+OBJ		:=	${addprefix ${OBJ_DIR}, ${OBJ}}
 
-SRCS	=	\
-			${FT_SRCS}					\
-			ft_printf.c					\
-			manage_arg.c				\
-			manage_flags.c				\
-			manage_field_width.c		\
-			manage_precision.c			\
-			manage_length_modifier.c	\
-			manage_specifier.c			\
-			manage_text.c				\
-			padding.c					\
-			putllnbr.c					\
-			putllunbr.c					\
-			putllunbr_bin.c				\
-			putllunbr_oct.c				\
-			putllunbr_hexa.c			\
-\
-			c/wclen.c					\
-			c/get_arg_c.c				\
-\
-			s/wstrlen.c					\
-			s/wstrsize.c				\
-			s/get_arg_s.c				\
-			s/putnull.c					\
-			s/padded_putnstr.c			\
-			s/padded_putnwstr.c			\
-\
-			b/blen.c					\
-			b/get_arg_b.c				\
-			b/padded_putllunbr_bin.c	\
-\
-			d/dlen.c					\
-			d/flag_exception.c			\
-			d/get_arg_d.c				\
-			d/padded_putllnbr.c			\
-\
-			o/olen.c					\
-			o/get_arg_o.c				\
-			o/padded_putllunbr_oct.c	\
-\
-			p/plen.c					\
-			p/get_arg_p.c				\
-			p/padded_putaddr.c			\
-\
-			u/ulen.c					\
-			u/get_arg_u.c				\
-\
-			x/xlen.c					\
-			x/get_arg_x_lower.c			\
-			x/get_arg_x_upper.c			\
-			x/padded_putllunbr_hexa.c	\
-\
-			%/get_arg_prct.c			\
+DEP		=	${OBJ:.o=.d}
 
-OBJS	=	${SRCS:.c=.o}
-OBJS	:=	${addprefix ${OBJD}, ${OBJS}}
+#######################################
+#                FLAGS                #
+#######################################
+CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	+=	-MMD -MP
+CFLAGS	+=	-I${PRV_DIR}
 
-DEPS		=	${OBJS:.o=.d}
+LDFLAGS	=	
 
-CFLAGS		=	-Wextra -Wall -Werror -MMD -I ${INCLUDE}
-LDFLAGS		=
-
-ifeq (${DEBUG}, true)
+ifeq (${DEBUG}, 1)
 	CFLAGS	+=	-g
 endif
 
-${NAME}:	${OBJS}
-	${LINKER} $@ ${LDFLAGS} ${OBJS}
+#######################################
+#                RULES                #
+#######################################
+${NAME}:	${OBJ}
+	${LINK} $@ $^ ${LDFLAGS}
 
 all:	${NAME}
 
 bonus:	${NAME}
 
--include ${DEPS}
+-include ${DEP}
 
-${OBJD}%.o:	${SRCD}%.c
-	@${MAKEDIR} ${OBJD}
-	${CC} $@ ${CFLAGS} $<
-
-${OBJD}${LIBFTD}%.o:	${LIBFTD}${FT_SRCD}%.c
-	@${MAKEDIR} ${OBJD}
-	@${MAKEDIR} ${OBJD}${LIBFTD}
-	@${MAKEDIR} ${SPECD}
+${OBJ_DIR}%.o:	${SRC_DIR}%.c
+	@${MKDIR} ${@D}
 	${CC} $@ ${CFLAGS} $<
 
 clean:
-	${RM} ${OBJD}
+	${RM} ${OBJ_DIR}
 
 fclean:
-	${RM} ${OBJD} ${NAME}
+	${RM} ${OBJ_DIR} ${NAME}
 
 re:	fclean all
 
-.PHONY:	all bonus clean fclean re
+-include /home/jodufour/Templates/mk_files/coffee.mk
+-include /home/jodufour/Templates/mk_files/norm.mk
+
+.PHONY:	all bonus clean fclean re coffee norm

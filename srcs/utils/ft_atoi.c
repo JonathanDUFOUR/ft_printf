@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/10 16:51:30 by jodufour         ###   ########.fr       */
+/*   Created: 2021/11/10 15:54:24 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/11 10:38:42 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "enum/e_ret.h"
+#include "internal.h"
 
-int	padding(int const c, int padlen)
+int	ft_atoi(char const *str)
 {
-	char	*padding;
-	char	*ptr;
+	int	output;
+	int	sign;
 
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERR);
-	ptr = padding;
-	while (padlen--)
-		*ptr++ = c;
-	*ptr = 0;
-	write(1, padding, ptr - padding);
-	free(padding);
-	return (SUCCESS);
+	output = 0;
+	sign = 1;
+	while (ft_isspace(*str))
+		++str;
+	if ((*str == '-' || *str == '+') && *str++ == '-')
+		sign = -1;
+	while (ft_isdigit(*str))
+		output = output * 10 + *str++ - '0';
+	return (output * sign);
 }

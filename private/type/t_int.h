@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   t_int.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/10 16:51:30 by jodufour         ###   ########.fr       */
+/*   Created: 2021/11/10 15:06:58 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/10 15:11:06 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "enum/e_ret.h"
+#ifndef T_INT_H
+# define T_INT_H
 
-int	padding(int const c, int padlen)
-{
-	char	*padding;
-	char	*ptr;
+typedef signed char			t_hhint;
+typedef signed short		t_hint;
+typedef signed int			t_int;
+typedef signed long			t_lint;
+typedef signed long long	t_llint;
 
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERR);
-	ptr = padding;
-	while (padlen--)
-		*ptr++ = c;
-	*ptr = 0;
-	write(1, padding, ptr - padding);
-	free(padding);
-	return (SUCCESS);
-}
+typedef unsigned char		t_hhuint;
+typedef unsigned short		t_huint;
+typedef unsigned int		t_uint;
+typedef unsigned long		t_luint;
+typedef unsigned long long	t_lluint;
+#endif

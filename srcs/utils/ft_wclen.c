@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   ft_wclen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/10 16:51:30 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/05 15:00:34 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/10 17:55:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "enum/e_ret.h"
+#include <wchar.h>
 
-int	padding(int const c, int padlen)
+int	ft_wclen(wchar_t const wc)
 {
-	char	*padding;
-	char	*ptr;
+	int	len;
 
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERR);
-	ptr = padding;
-	while (padlen--)
-		*ptr++ = c;
-	*ptr = 0;
-	write(1, padding, ptr - padding);
-	free(padding);
-	return (SUCCESS);
+	len = 1;
+	if (wc >= 0x80 && ++len && wc >= 0x800 && ++len && wc >= 0x10000)
+		++len;
+	return (len);
 }

@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   e_style.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/10 16:51:30 by jodufour         ###   ########.fr       */
+/*   Created: 2021/11/10 15:13:13 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/10 15:13:25 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "enum/e_ret.h"
+#ifndef E_STYLE_H
+# define E_STYLE_H
 
-int	padding(int const c, int padlen)
+enum	e_style
 {
-	char	*padding;
-	char	*ptr;
+	LOWER,
+	UPPER
+};
 
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERR);
-	ptr = padding;
-	while (padlen--)
-		*ptr++ = c;
-	*ptr = 0;
-	write(1, padding, ptr - padding);
-	free(padding);
-	return (SUCCESS);
-}
+#endif

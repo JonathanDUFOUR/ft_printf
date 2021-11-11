@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_text.c                                      :+:      :+:    :+:   */
+/*   manage_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 06:37:06 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/11 10:40:36 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/13 16:21:56 by jodufour          #+#    #+#             */
+/*   Updated: 2021/05/18 05:16:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "internal.h"
-#include "type/t_ctx.h"
 
-char	*manage_text(char const *format, t_ctx *const ctx)
+char	*parse_prec(char const *format, t_ctx *ctx, va_list va)
 {
-	char	*next;
-
-	next = ft_strchr(format, '%');
-	if (next)
-		ctx->fwidth = next - format;
-	else
-		ctx->fwidth = ft_strlen(format);
-	write(1, format, ctx->fwidth);
-	ctx->len += ctx->fwidth;
-	format += ctx->fwidth;
+	if (*format == '.')
+	{
+		if (*++format == '*')
+		{
+			ctx->prec = va_arg(va, int);
+			if (ctx->prec >> 31)
+				ctx->prec = 1;
+			else
+			{
+				ctx->precised = true;
+				ctx->flags &= ~(1 << 1);
+			}
+			++format;
+		}
+		else
+		{
+			ctx->precised = true;
+			ctx->flags &= ~(1 << 1);
+			ctx->prec = ft_atoi(format);
+			while (ft_isdigit(*format))
+				++format;
+		}
+	}
 	return ((char *)format);
 }

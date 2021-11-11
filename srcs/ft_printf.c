@@ -6,17 +6,18 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 01:58:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/07/02 14:45:15 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/11/11 10:40:06 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "ft_printf.h"
-#include "e_ret.h"
+#include <stdarg.h>
+#include "internal.h"
+#include "type/t_ctx.h"
+#include "enum/e_ret.h"
 
-static void	init_ctx(t_ctx *ctx)
+static void	reset(t_ctx *const ctx)
 {
-	ctx->len = 0;
 	ctx->flags = 0;
 	ctx->fwidth = 0;
 	ctx->prec = 1;
@@ -25,23 +26,24 @@ static void	init_ctx(t_ctx *ctx)
 
 int	ft_printf(char const *format, ...)
 {
-	t_ctx		ctx;
-	va_list		va;
+	t_ctx	ctx;
+	va_list	va;
 
-	init_ctx(&ctx);
+	ctx.len = 0;
 	va_start(va, format);
 	while (*format)
 	{
+		reset(&ctx);
 		if (*format == '%')
-			format = manage_arg(format + 1, &ctx, va);
+			format = manage_cvrt(format + 1, &ctx, va);
 		else
 			format = manage_text(format, &ctx);
 		if (!format)
 		{
 			va_end(va);
-			return (MALLOC_ERRNO);
+			return (-(!!MALLOC_ERR));
 		}
 	}
 	va_end(va);
-	return ((int)ctx.len);
+	return (ctx.len);
 }

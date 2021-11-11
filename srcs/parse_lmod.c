@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   parse_lmod.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/10 16:51:30 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/01 23:12:21 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/11 10:43:50 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "enum/e_ret.h"
+#include "type/t_ctx.h"
 
-int	padding(int const c, int padlen)
+char	*parse_lmod(char const *format, t_ctx *ctx)
 {
-	char	*padding;
-	char	*ptr;
-
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERR);
-	ptr = padding;
-	while (padlen--)
-		*ptr++ = c;
-	*ptr = 0;
-	write(1, padding, ptr - padding);
-	free(padding);
-	return (SUCCESS);
+	if (*format == 'l')
+	{
+		++format;
+		if (*format == 'l' && ++format)
+			ctx->flags |= 1 << 6;
+		else
+			ctx->flags |= 1 << 5;
+	}
+	else if (*format == 'h')
+	{
+		++format;
+		if (*format == 'h' && ++format)
+			ctx->flags |= 1 << 8;
+		else
+			ctx->flags |= 1 << 7;
+	}
+	return ((char *)format);
 }

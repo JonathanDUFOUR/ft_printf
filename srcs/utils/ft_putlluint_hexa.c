@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   ft_putlluint_hexa.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/10 16:51:30 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/03 01:47:48 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/10 16:31:04 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <unistd.h>
-#include "enum/e_ret.h"
+#include "type/t_int.h"
 
-int	padding(int const c, int padlen)
+void	ft_putlluint_hexa(t_lluint const nb, char const c)
 {
-	char	*padding;
-	char	*ptr;
+	int		mod;
+	char	digit;
 
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERR);
-	ptr = padding;
-	while (padlen--)
-		*ptr++ = c;
-	*ptr = 0;
-	write(1, padding, ptr - padding);
-	free(padding);
-	return (SUCCESS);
+	if (nb > 15)
+		ft_putlluint_hexa(nb / 16, c);
+	mod = nb % 16;
+	if (mod > 9)
+		digit = mod - 10 + c;
+	else
+		digit = mod + '0';
+	write(1, &digit, 1);
 }

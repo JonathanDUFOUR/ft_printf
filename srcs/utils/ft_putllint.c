@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   ft_putllint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/10 16:51:30 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/02 01:35:21 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/10 16:38:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <unistd.h>
-#include "enum/e_ret.h"
+#include "type/t_int.h"
 
-int	padding(int const c, int padlen)
+void	ft_putllint(t_llint const nb)
 {
-	char	*padding;
-	char	*ptr;
+	t_lluint	abs;
+	char		digit;
 
-	padding = malloc((padlen + 1) * sizeof(char));
-	if (!padding)
-		return (MALLOC_ERR);
-	ptr = padding;
-	while (padlen--)
-		*ptr++ = c;
-	*ptr = 0;
-	write(1, padding, ptr - padding);
-	free(padding);
-	return (SUCCESS);
+	abs = (t_lluint)nb;
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		abs = (t_lluint)(-nb);
+	}
+	if (abs > 9)
+		ft_putllint(abs / 10);
+	digit = abs % 10 + '0';
+	write(1, &digit, 1);
 }
