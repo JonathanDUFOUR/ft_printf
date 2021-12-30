@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 04:09:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/11 10:13:51 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:02:37 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ int	cvrt_b(t_ctx *const ctx, va_list va);
 int	cvrt_prct(t_ctx *const ctx, va_list va __attribute__((unused)));
 
 static t_cvrt const		g_cvrt[] = {
-	{'c', true, cvrt_c},
-	{'s', true, cvrt_s},
-	{'p', true, cvrt_p},
-	{'d', true, cvrt_d},
-	{'i', true, cvrt_d},
-	{'u', true, cvrt_u},
-	{'x', true, cvrt_x_lower},
-	{'X', true, cvrt_x_upper},
-	{'o', true, cvrt_o},
-	{'b', true, cvrt_b},
-	{'%', false, cvrt_prct},
-	{0}
+{'c', true, cvrt_c},
+{'s', true, cvrt_s},
+{'p', true, cvrt_p},
+{'d', true, cvrt_d},
+{'i', true, cvrt_d},
+{'u', true, cvrt_u},
+{'x', true, cvrt_x_lower},
+{'X', true, cvrt_x_upper},
+{'o', true, cvrt_o},
+{'b', true, cvrt_b},
+{'%', false, cvrt_prct},
+{0}
 };
 
 #endif

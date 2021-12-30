@@ -1,7 +1,5 @@
-**
-
-!*/
-!*.c
-!*.h
-!Makefile
-!.gitignore
+**.o
+**.d
+**.a
+**.so
+**.out
