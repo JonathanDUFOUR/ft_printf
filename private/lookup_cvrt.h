@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_lookup.h                                   :+:      :+:    :+:   */
+/*   lookup_cvrt.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 04:09:49 by jodufour          #+#    #+#             */
-/*   Updated: 2021/12/30 21:02:37 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/27 09:56:51 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_LOOKUP_H
-# define CONVERT_LOOKUP_H
+#ifndef LOOKUP_CVRT
+# define LOOKUP_CVRT
 
 # include <stdarg.h>
-# include "type/t_ctx.h"
+# include "t_ctx.h"
 
 typedef struct s_cvrt	t_cvrt;
 

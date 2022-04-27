@@ -6,14 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 06:58:39 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/11 10:09:00 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/27 09:20:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdint.h>
 #include "internal.h"
-#include "enum/e_ret.h"
+#include "e_ret.h"
 
 static int	padded_putprct(uint16_t const flags, int const padlen)
 {

@@ -6,13 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:39:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/11 11:07:10 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/27 09:20:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "internal.h"
-#include "enum/e_ret.h"
+#include "e_ret.h"
 
 static t_lluint	get_right_type(t_ctx *const ctx, va_list va)
 {

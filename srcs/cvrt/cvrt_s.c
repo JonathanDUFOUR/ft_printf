@@ -6,13 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 04:38:14 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/11 11:20:50 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/27 09:20:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "internal.h"
-#include "enum/e_ret.h"
+#include "e_ret.h"
 
 int	padded_putnstr(
 	char const *str,

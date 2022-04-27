@@ -6,14 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 16:02:04 by jodufour          #+#    #+#             */
-/*   Updated: 2021/11/11 10:40:22 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/27 09:57:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "internal.h"
-#include "convert_lookup.h"
-#include "type/t_ctx.h"
+#include "lookup_cvrt.h"
+#include "t_ctx.h"
 
 char	*manage_cvrt(char const *format, t_ctx *const ctx, va_list va)
 {
