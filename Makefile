@@ -6,14 +6,14 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 15:02:31 by jodufour          #+#    #+#              #
-#    Updated: 2021/11/11 17:02:56 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/19 02:56:23 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################################
 #              COMMANDS              #
 ######################################
-CC		=	clang -c -o
+CC		=	clang
 LINK	=	ar rcs
 MKDIR	=	mkdir -p
 RM		=	rm -rf
@@ -90,7 +90,8 @@ DEP		=	${OBJ:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-c
+CFLAGS	+=	-Wall -Wextra -Werror
 CFLAGS	+=	-MMD -MP
 CFLAGS	+=	-I${INC_DIR}
 CFLAGS	+=	-I${PRV_DIR}
@@ -104,31 +105,30 @@ endif
 #######################################
 #                RULES                #
 #######################################
-${NAME}:	${OBJ}
+.PHONY: all bonus clean fclean re fre
+
+${NAME}: ${OBJ}
 	${LINK} $@ $^ ${LDFLAGS}
 
-test:	${OBJ_DIR}main.o ${NAME}
-	clang -o $@ $^
+all: ${NAME}
 
-all:	${NAME} test
-
-bonus:	${NAME}
+bonus: ${NAME}
 
 -include ${DEP}
 
-${OBJ_DIR}%.o:	${SRC_DIR}%.c
+${OBJ_DIR}%.o: ${SRC_DIR}%.c
 	@${MKDIR} ${@D}
-	${CC} $@ ${CFLAGS} $<
+	${CC} $< ${CFLAGS} ${OUTPUT_OPTION}
 
 clean:
 	${RM} ${OBJ_DIR}
 
 fclean:
-	${RM} ${OBJ_DIR} ${NAME} test
+	${RM} ${OBJ_DIR} ${NAME}
 
-re:	fclean all
+re: clean all
 
--include /home/jodufour/Templates/mk_files/coffee.mk
--include /home/jodufour/Templates/mk_files/norm.mk
+fre: fclean all
 
-.PHONY:	all bonus clean fclean re coffee norm
+-include ${HOME}/Templates/mk_files/coffee.mk
+-include ${HOME}/Templates/mk_files/norm.mk
